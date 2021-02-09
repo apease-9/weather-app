@@ -1,4 +1,4 @@
-//Change Temperature
+//////////////////////////Change Temperature///////////////////////////////////////
 function showTemperature(response) {
   console.log(response);
   document.querySelector("#search").innerHTML = response.data.name;
@@ -6,19 +6,63 @@ function showTemperature(response) {
   temperature.innerHTML = Math.round(response.data.main.temp);
   let realFeel = document.querySelector(".realFeel");
   realFeel.innerHTML = Math.round(response.data.main.feels_like);
+
+  //coordinates
   let coordinates = document.getElementById("coordinates");
   coordinates.innerHTML = `Lat: ${response.data.coord.lat}, Lon: ${response.data.coord.lon}`;
+
+  //Converting wind degrees to direction
   document.getElementById("wind").innerHTML = Math.round(
     response.data.wind.speed * 3.6
   );
+  let degrees = response.data.wind.deg;
+  let windDegree = document.querySelector(".windDe");
+  if (degrees >= 348.75 && degrees <= 11.25) {
+    windDegree.innerHTML = "N";
+  } else if (degrees >= 11.25 && degrees <= 33.75) {
+    windDegree.innerHTML = "NNE";
+  } else if (degrees >= 33.75 && degrees <= 56.25) {
+    windDegree.innerHTML = "NE";
+  } else if (degrees >= 56.25 && degrees <= 78.75) {
+    windDegree.innerHTML = "ENE";
+  } else if (degrees >= 78.75 && degrees <= 101.25) {
+    windDegree.innerHTML = "E";
+  } else if (degrees >= 101.25 && degrees <= 123.75) {
+    windDegree.innerHTML = "ESE";
+  } else if (degrees >= 123.75 && degrees <= 146.25) {
+    windDegree.innerHTML = "SE";
+  } else if (degrees >= 146.25 && degrees <= 168.75) {
+    windDegree.innerHTML = "SSE";
+  } else if (degrees >= 168.75 && degrees <= 191.25) {
+    windDegree.innerHTML = "S";
+  } else if (degrees >= 191.25 && degrees <= 213.75) {
+    windDegree.innerHTML = "SSW";
+  } else if (degrees >= 213.75 && degrees <= 236.25) {
+    windDegree.innerHTML = "SW";
+  } else if (degrees >= 236.25 && degrees <= 258.75) {
+    windDegree.innerHTML = "WSW";
+  } else if (degrees >= 258.75 && degrees <= 281.25) {
+    windDegree.innerHTML = "W";
+  } else if (degrees >= 281.25 && degrees <= 303.75) {
+    windDegree.innerHTML = "WNW";
+  } else if (degrees >= 303.75 && degrees <= 326.25) {
+    windDegree.innerHTML = "NW";
+  } else if (degrees >= 326.25 && degrees <= 348.75) {
+    windDegree.innerHTML = "NNW";
+  }
+
+  //humidity
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = Math.round(response.data.main.humidity);
+
+  //forecast (goes to function showForecast)
   let forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
   axios.get(forecastURL).then(showForecast);
 }
-//Five Day forecast, description, and max/min for the day
+////////////////////Five Day forecast, description, and max/min for the day////////////////////////
 function showForecast(response) {
   console.log(response.data);
+  //Max and Min for the day
   let maxTemp = document.querySelector(".temp-max");
   maxTemp.innerHTML = Math.round(response.data.daily[0].temp.max);
   let minTemp = document.querySelector(".temp-min");
@@ -26,6 +70,7 @@ function showForecast(response) {
   document.querySelector(".tempNum1").innerHTML = Math.round(
     response.data.daily[1].temp.max
   );
+  //Mac and min forcast
   document.querySelector(".tempNum1-1").innerHTML = Math.round(
     response.data.daily[1].temp.min
   );
@@ -53,10 +98,12 @@ function showForecast(response) {
   document.querySelector(".tempNum5-5").innerHTML = Math.round(
     response.data.daily[5].temp.min
   );
+  //Dew Point
   document.getElementById("dew").innerHTML = Math.round(
     response.data.daily[0].dew_point
   );
 
+  //Weather Descriptions
   document.getElementById("weatherDescription").innerHTML =
     response.data.daily[0].weather[0].description;
   document.getElementById("weather-1").innerHTML =
@@ -73,7 +120,7 @@ function showForecast(response) {
   //Make an if statement to change weather icon based on what the main idea is (ie. rain, snow, sun, cloudy)
 }
 
-//Initial Loadup
+////////////////////////////////////Initial Loadup/////////////////////////////////////////////
 let apiKey = "100f8a7c29c0b02275197751bc3ff692";
 let city = "Raleigh";
 let state = "NC";
@@ -82,7 +129,7 @@ let units = "metric";
 let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country}&units=${units}`;
 axios.get(`${apiURL}&appid=${apiKey}`).then(showTemperature);
 
-//Change city via button/ form submit
+////////////////////////Change city via button/ form submit////////////////////////////
 let cityChange = document.querySelector(".changeCity");
 cityChange.addEventListener("submit", cityC);
 
@@ -112,7 +159,7 @@ function cityC(event) {
     });
   }
 }
-//Change location with current location
+///////////////////////Change location with current location/////////////////////////
 function showPosition(position) {
   navigator.geolocation.getCurrentPosition(function (position) {
     let lon = position.coords.longitude;
@@ -126,7 +173,7 @@ function showPosition(position) {
 let button = document.querySelector("#currentLocation");
 button.addEventListener("click", showPosition);
 
-//Change city via popular city nav
+////////////////////Change city via popular city nav////////////////////////
 let tokyo = document.querySelector("#Tokyo");
 let hk = document.querySelector("#Hong-Kong");
 let paris = document.querySelector("#Paris");
@@ -163,63 +210,67 @@ function changeRome() {
   axios.get(`${romeWeather}&appid=${apiKey}`).then(showTemperature);
 }
 
-//Change Date
+//////////////////////////////////Change Date/////////////////////////////////////
 
-function zeroAdd(m) {
-  if (m < 10) {
-    m = "0" + m;
+function GetTime() {
+  function zeroAdd(m) {
+    if (m < 10) {
+      m = "0" + m;
+    }
+    return m;
   }
-  return m;
+
+  let now = new Date();
+  let date = now.getDate();
+  let hour = zeroAdd(now.getHours());
+  let minutes = zeroAdd(now.getMinutes());
+  let year = now.getFullYear();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+
+  let months = [
+    "January",
+    "Febuary",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[now.getMonth()];
+  let todayDate = document.querySelector(".date");
+
+  todayDate.innerHTML = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}`;
+  document.querySelector(".date1").innerHTML = `${days[now.getDay() + 1]}`;
+  document.querySelector(".date2").innerHTML = `${days[now.getDay() + 2]}`;
+  document.querySelector(".date3").innerHTML = `${days[now.getDay() + 3]}`;
+  document.querySelector(".date4").innerHTML = `${days[now.getDay() + 4]}`;
+  document.querySelector(".date5").innerHTML = `${days[now.getDay() + 5]}`;
+  setTimeout(GetTime, 500);
 }
+GetTime();
 
-let now = new Date();
-let date = now.getDate();
-let hour = zeroAdd(now.getHours());
-let minutes = zeroAdd(now.getMinutes());
-let year = now.getFullYear();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-
-let months = [
-  "January",
-  "Febuary",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-let todayDate = document.querySelector(".date");
-
-todayDate.innerHTML = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}`;
-document.querySelector(".date1").innerHTML = `${days[now.getDay() + 1]}`;
-document.querySelector(".date2").innerHTML = `${days[now.getDay() + 2]}`;
-document.querySelector(".date3").innerHTML = `${days[now.getDay() + 3]}`;
-document.querySelector(".date4").innerHTML = `${days[now.getDay() + 4]}`;
-document.querySelector(".date5").innerHTML = `${days[now.getDay() + 5]}`;
-
-//Change background based on time
+/////////////////////Change background based on time/////////////////////
 let hourDay = new Date();
 let hourColor = hourDay.getHours();
 
@@ -326,7 +377,7 @@ if (hourColor >= 21 || hourColor < 5) {
   };
 }
 
-//Change units via switch
+///////////////////Change units via switch//////////////////////////////////
 let unitSwitch = document.querySelector("input[name=switchUnits]");
 unitSwitch.addEventListener("change", switchUnits);
 function switchUnits() {
@@ -355,4 +406,41 @@ function switchUnits() {
   }
 }
 
-//burger transition
+/////////////////////////popout the burger////////////////////////////////////////
+function toggleBurger() {
+  let list = document.querySelector(".header-stuff");
+  if (burger.classList.contains("pop")) {
+    burger.classList.remove("pop");
+    burger.classList.add("shrink");
+    list.animate(
+      [
+        //keyframes
+        { transform: "translateX(0)" },
+        { transform: "translateX(100%)" },
+      ],
+      {
+        duration: 1000,
+        easing: "cubic-bezier(0.42, 0, 0.58, 1)",
+      }
+    );
+    list.style.transform = "translateX(100%)";
+  } else {
+    burger.classList.add("pop");
+    burger.classList.remove("shrink");
+    list.animate(
+      [
+        //keyframes
+        { transform: "translateX(100%)" },
+        { transform: "translateX(0)" },
+      ],
+      {
+        duration: 1000,
+        easing: "cubic-bezier(0.42, 0, 0.58, 1)",
+      }
+    );
+    list.style.transform = "translateX(0)";
+  }
+}
+
+let burger = document.querySelector(".burger");
+burger.addEventListener("click", toggleBurger);
