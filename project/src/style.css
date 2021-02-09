@@ -1,0 +1,297 @@
+/* Background */
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: #000;
+  background-size: 800%;
+  animation: bg-animation 50s infinite alternate;
+}
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+/*Inside work */
+.app {
+  background: #d4d7d8;
+  margin: 2% auto 0;
+  padding: 10px 15px 20px;
+  height: 100%;
+  font-family: "Yusei Magic", sans-serif;
+  border-radius: 50px;
+  max-width: 70%;
+  align-content: center;
+  box-shadow: rgba(37, 39, 89, 0.7) 0px 8px 8px 0;
+}
+#current {
+  text-align: right;
+  padding: 25px;
+}
+#search {
+  font-size: 70px;
+  font-weight: bold;
+}
+.crumbs {
+  text-align: center;
+  display: flex;
+  min-height: fit-content;
+  justify-content: space-around;
+}
+.popular {
+  padding-left: 20px;
+}
+.pop-links {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  list-style: none;
+  padding-right: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header-stuff {
+  border-bottom: 1px solid;
+}
+
+.cityInput,
+.stateInput,
+.countryInput {
+  width: 30%;
+  height: 30px;
+  margin-bottom: 20px;
+  border: none;
+  box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+}
+
+.citySubmit {
+  height: 30px;
+  border: none;
+  box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+  transition: 300ms ease-in-out;
+}
+#currentCity {
+  text-align: center;
+}
+.currentWeather {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+.extra {
+  line-height: 24px;
+}
+
+.currentWeather li {
+  display: block;
+  margin: 0;
+}
+
+.currentWeather {
+  border: 2px solid;
+}
+
+.fiveDay {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  align-content: flex-start;
+}
+
+.future {
+  align-items: center;
+  flex-basis: 20%;
+  padding: 20px;
+  padding-left: 5px;
+  width: 80%;
+  height: 80%;
+  border: 1px solid;
+  margin: 0 auto;
+}
+
+.future h3 {
+  font-size: 15px;
+  padding: 0;
+}
+
+#coordinates {
+  font-size: 12px;
+  padding-top: 5px;
+}
+#search {
+  text-transform: uppercase;
+}
+footer p {
+  font-size: 10px;
+  text-align: right;
+}
+.minMax {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0 auto;
+}
+#min,
+#max {
+  flex-grow: 1;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+/* Hides Checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #a109d4d8;
+  transition: 1.5s;
+  border-radius: 34px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: " ";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(246, 243, 252);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #008cff8c;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.weatherD {
+  text-transform: capitalize;
+}
+#currentLocation {
+  border-radius: 50px;
+  color: #ffffff;
+  transition: 300ms ease-in-out;
+  border: none;
+  display: inline-block;
+  left: 12;
+  top: -3;
+}
+
+.highLow {
+  display: flex;
+  flex-flow: wrap;
+}
+.fiveDay li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  background: white;
+  justify-self: center;
+}
+.cbox {
+  border: none;
+  align-content: center;
+  padding: 10px;
+  width: 30%;
+  height: 30%;
+}
+.dateBox {
+  align-content: right;
+  width: 25%;
+  height: 25%;
+}
+#tempNow {
+  font-size: 24px;
+  justify-content: center;
+}
+.burger {
+  position: absolute;
+  right: 0;
+  top: 10;
+  display: none;
+}
+.burger div {
+  width: 25px;
+  height: 2px;
+  margin: 5px;
+  background-color: rgb(17, 15, 11);
+}
+
+@media screen and (max-width: 760px) {
+  body {
+    overflow-x: hidden;
+  }
+  .header-stuff {
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 2;
+    background-color: blanchedalmond;
+    display: flex;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+  }
+  .citySubmit,
+  #currentLocation {
+    text-align: center;
+    align-self: center;
+  }
+  .popular {
+    display: none;
+  }
+  .pop-links {
+    flex-direction: column;
+    padding-top: 30px;
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+    cursor: pointer;
+  }
+  @keyframes popFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

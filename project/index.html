@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link href="src/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <div class="burger">
+        <div class="line-1"></div>
+        <div class="line-2"></div>
+        <div class="line-3"></div>
+      </div>
+      <nav class="header-stuff">
+        <!--Unit change bar-->
+        <div id="current">
+          <span id="metric">Metric</span>
+          <label class="switch">
+            <input type="checkbox" name="switchUnits" />
+            <span class="slider round"></span>
+          </label>
+          <span id="Imperial">Imperial</span>
+        </div>
+
+        <!--Change City form-->
+        <div class="cityForm">
+          <div id="form">
+            <form class="changeCity">
+              <input type="text" placeholder="City" class="cityInput" />
+              <input type="text" placeholder="State" class="stateInput" />
+              <input type="text" placeholder="Country" class="countryInput" />
+              <br />
+              <div class="buttons">
+                <input
+                  type="submit"
+                  value="Change city"
+                  class="citySubmit"
+                  id="citySubmit"
+                />
+
+                <div id="button">
+                  <button id="currentLocation">Use current location</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <br />
+
+        <!--Popular city tabs-->
+        <nav class="crumbs">
+          <div class="popular">Popular:</div>
+          <ul class="pop-links">
+            <li class="crumb" id="Tokyo">
+              <a href="#">Tokyo,Japan</a>
+            </li>
+            <li class="crumb" id="Hong-Kong">
+              <a href="#">Hong Kong,China</a>
+            </li>
+            <li class="crumb" id="Paris">
+              <a href="#">Paris,France</a>
+            </li>
+            <li class="crumb" id="NY">
+              <a href="#">New York City,NY,US</a>
+            </li>
+            <li class="crumb" id="Rome">
+              <a href="#">Rome,Italy</a>
+            </li>
+          </ul>
+        </nav>
+      </nav>
+
+      <!--current city display-->
+      <div id="currentCity">
+        <p class="date">week month day year time</p>
+        <h1 id="search">Raleigh</h1>
+        <p id="coordinates"></p>
+      </div>
+      <br /><br />
+      <div class="currentWeather">
+        <div class="extraBox cbox">
+          <ul>
+            <li class="extra">
+              Dew Point: <span id="dew" class="unit-0">1</span
+              ><span class="unit">°C</span>
+            </li>
+            <li class="extra">Humidity: <span id="humidity">49</span>%</li>
+            <li class="extra">
+              Wind: <span class="unit-1" id="wind">13</span
+              ><span class="unit1">km/h</span>
+            </li>
+          </ul>
+        </div>
+        <div class="imgBox cbox">
+          <img
+            class="img-0 icon"
+            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+            alt="It is cloudy"
+          />
+          <h2 id="weatherDescription" class="weatherD">Cloudy</h2>
+        </div>
+        <div class="dateBox cbox">
+          <ul>
+            <li id="tempNow">
+              Current Temp:
+              <span class="tempNum unit-0">8</span><span class="unit">°C</span>
+            </li>
+            <li>
+              Real Feel:
+              <span class="realFeel unit-0">0</span><span class="unit">°C</span>
+            </li>
+            <li>
+              High:
+              <span class="temp-max unit-0"></span><span class="unit">°C</span>
+            </li>
+
+            <li>
+              Low:
+              <span class="temp-min unit-0"></span>
+              <span class="unit">°C</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <br /><br />
+
+      <div class="fiveDay">
+        <div class="day1 future">
+          <ul>
+            <li class="date1">Wednesday</li>
+            <li>
+              <img
+                class="img1 icon"
+                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+                alt="It is snowing"
+              />
+            </li>
+            <li class="weatherD" id="weather-1"></li>
+            <br />
+            <li>
+              <div class="highLow">
+                <div id="high1">
+                  High: <span class="tempNum1 unit-0">-2</span
+                  ><span class="unit">°C</span>
+                </div>
+                <div id="low1">
+                  Low: <span class="tempNum1-1 unit-0"></span
+                  ><span class="unit">°C</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="day2 future">
+          <ul>
+            <li class="date2">Wednesday</li>
+            <li>
+              <img
+                class="img2 icon"
+                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+                alt="It is snowing"
+              />
+            </li>
+            <li class="weatherD" id="weather-2"></li>
+            <br />
+            <li>
+              <div class="highLow">
+                <div id="high2">
+                  High: <span class="tempNum2 unit-0">-2</span
+                  ><span class="unit">°C</span>
+                </div>
+                <div id="low2">
+                  Low:
+                  <span class="tempNum2-2 unit-0"></span>
+                  <span class="unit">°C</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="day3 future">
+          <ul>
+            <li class="date3">Wednesday</li>
+            <li>
+              <img
+                class="img3 icon"
+                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+                alt="It is snowing"
+              />
+            </li>
+            <li class="weatherD" id="weather-3"></li>
+            <br />
+            <li>
+              <div class="highLow">
+                <div id="high3">
+                  High: <span class="tempNum3 unit-0">-2</span
+                  ><span class="unit">°C</span>
+                </div>
+                <div id="low3">
+                  Low: <span class="tempNum3-3 unit-0"></span
+                  ><span class="unit">°C</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="day4 future">
+          <ul>
+            <li class="date4">Wednesday</li>
+            <li>
+              <img
+                class="img1 icon"
+                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+                alt="It is snowing"
+              />
+            </li>
+            <li class="weatherD" id="weather-4"></li>
+            <br />
+            <li>
+              <div class="highLow">
+                <div id="high4">
+                  High: <span class="tempNum4 unit-0">-2</span
+                  ><span class="unit">°C</span>
+                </div>
+                <div id="low4">
+                  Low: <span class="tempNum4-4 unit-0"></span
+                  ><span class="unit">°C</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="day5 future">
+          <ul>
+            <li class="date5">Wednesday</li>
+            <li>
+              <img
+                class="img1 icon"
+                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+                alt="It is snowing"
+              />
+            </li>
+            <li class="weatherD" id="weather-5"></li>
+            <br />
+            <li>
+              <div class="highLow">
+                <div id="high5">
+                  High: <span class="tempNum5 unit-0">-2</span
+                  ><span class="unit">°C</span>
+                </div>
+                <div id="low5">
+                  Low: <span class="tempNum5-5 unit-0"></span
+                  ><span class="unit">°C</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <br /><br />
+      </div>
+      <footer>
+        <p>
+          <span id="me"> Coded by: Alia Pease</span> <br />
+          <span id="WeatherData"
+            >Weather Data Provider:
+            <a href="https://openweathermap.org/">OpenWeather(TM)</a></span
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script src="src/script.js"></script>
+</html>
