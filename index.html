@@ -86,8 +86,11 @@
 
       <!--current city display-->
       <div id="currentCity">
-        <p class="date">week month day year time</p>
+        <p>
+          Your current time: <span class="date">week month day year time</span>
+        </p>
         <h1 id="search">Raleigh</h1>
+        <p id="timezoneP">Current time: <span class="timezone"></span></p>
         <p id="coordinates"></p>
       </div>
       <br /><br />
@@ -95,13 +98,13 @@
         <div class="extraBox cbox">
           <ul>
             <li class="extra">
-              Dew Point: <span id="dew" class="unit-0">1</span
+              Dew Point: <span id="dew" class="unit-0"></span
               ><span class="unit">°C</span>
             </li>
-            <li class="extra">Humidity: <span id="humidity">49</span>%</li>
+            <li class="extra">Humidity: <span id="humidity"></span>%</li>
             <li class="extra">
               Wind: <span class="windDi"></span
-              ><span class="unit-1" id="wind">13</span
+              ><span class="unit-1" id="wind"></span
               ><span class="unit1">km/h</span> <span class="windDe"></span>
             </li>
           </ul>
@@ -112,17 +115,17 @@
             src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
             alt="It is cloudy"
           />
-          <h2 id="weatherDescription" class="weatherD">Cloudy</h2>
+          <h2 id="weatherDescription" class="weatherD"></h2>
         </div>
         <div class="dateBox cbox">
           <ul>
             <li id="tempNow">
               Current Temp:
-              <span class="tempNum unit-0">8</span><span class="unit">°C</span>
+              <span class="tempNum unit-0"></span><span class="unit">°C</span>
             </li>
             <li>
               Real Feel:
-              <span class="realFeel unit-0">0</span><span class="unit">°C</span>
+              <span class="realFeel unit-0"></span><span class="unit">°C</span>
             </li>
             <li>
               High:
@@ -156,7 +159,7 @@
             <li>
               <div class="highLow">
                 <div id="high1">
-                  High: <span class="tempNum1 unit-0">-2</span
+                  High: <span class="tempNum1 unit-0"></span
                   ><span class="unit">°C</span>
                 </div>
                 <div id="low1">
@@ -182,7 +185,7 @@
             <li>
               <div class="highLow">
                 <div id="high2">
-                  High: <span class="tempNum2 unit-0">-2</span
+                  High: <span class="tempNum2 unit-0"></span
                   ><span class="unit">°C</span>
                 </div>
                 <div id="low2">
@@ -209,7 +212,7 @@
             <li>
               <div class="highLow">
                 <div id="high3">
-                  High: <span class="tempNum3 unit-0">-2</span
+                  High: <span class="tempNum3 unit-0"></span
                   ><span class="unit">°C</span>
                 </div>
                 <div id="low3">
@@ -235,7 +238,7 @@
             <li>
               <div class="highLow">
                 <div id="high4">
-                  High: <span class="tempNum4 unit-0">-2</span
+                  High: <span class="tempNum4 unit-0"></span
                   ><span class="unit">°C</span>
                 </div>
                 <div id="low4">
@@ -261,7 +264,7 @@
             <li>
               <div class="highLow">
                 <div id="high5">
-                  High: <span class="tempNum5 unit-0">-2</span
+                  High: <span class="tempNum5 unit-0"></span
                   ><span class="unit">°C</span>
                 </div>
                 <div id="low5">
@@ -278,15 +281,18 @@
         <p>
           <span
             ><a href="https://github.com/apease-9/weather-app"
-              >Open-source code by</a
+              >Open-source code</a
             >
-            Alia Pease</span
+            by Alia Pease</span
           >
           <br />
           <span id="WeatherData"
             >Weather Data Provider:
-            <a href="https://openweathermap.org/">OpenWeather(TM)</a></span
+            <a href="https://openweathermap.org/">OpenWeather</a></span
           >
+          <br />
+          Time Zone Data Provider:
+          <a href="https://ipgeolocation.io/"> ipgeolocation </a>
         </p>
       </footer>
     </div>

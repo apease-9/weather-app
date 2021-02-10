@@ -167,7 +167,8 @@ Current City Display
   font-weight: bold;
   text-transform: uppercase;
 }
-#coordinates {
+#coordinates,
+#timezoneP {
   font-size: 12px;
   padding-top: 5px;
 }

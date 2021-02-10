@@ -116,7 +116,7 @@ function showForecast(response) {
     response.data.daily[4].weather[0].description;
   document.getElementById("weather-5").innerHTML =
     response.data.daily[5].weather[0].description;
-  //can add in: wind degree (response.data.daily[0].wind_deg) --> comes back with number, find out how to translate to directions
+
   //Make an if statement to change weather icon based on what the main idea is (ie. rain, snow, sun, cloudy)
 }
 
@@ -138,7 +138,7 @@ function cityC(event) {
   let cityInput = document.querySelector(".cityInput").value.trim();
   let stateInput = document.querySelector(".stateInput").value.trim();
   let countryInput = document.querySelector(".countryInput").value.trim();
-  let currentCity = document.querySelector("#search");
+
   if (cityInput.length > 0) {
     let city = `${cityInput},${stateInput},${countryInput}`;
     let apiKey = "100f8a7c29c0b02275197751bc3ff692";
@@ -196,7 +196,7 @@ function changeHK() {
 }
 function changeParis() {
   event.preventDefault();
-  let parisWeather = `https://api.openweathermap.org/data/2.5/weather?q=Paris&units=${units}`;
+  let parisWeather = `https://api.openweathermap.org/data/2.5/weather?q=Paris,,FR&units=${units}`;
   axios.get(`${parisWeather}&appid=${apiKey}`).then(showTemperature);
 }
 function changeNY() {
@@ -206,7 +206,7 @@ function changeNY() {
 }
 function changeRome() {
   event.preventDefault();
-  let romeWeather = `https://api.openweathermap.org/data/2.5/weather?q=Rome&units=${units}`;
+  let romeWeather = `https://api.openweathermap.org/data/2.5/weather?q=rome,,italy&units=${units}`;
   axios.get(`${romeWeather}&appid=${apiKey}`).then(showTemperature);
 }
 
