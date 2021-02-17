@@ -17,7 +17,7 @@ function showTemperature(response) {
   );
   let degrees = response.data.wind.deg;
   let windDegree = document.querySelector(".windDe");
-  if (degrees >= 348.75 && degrees <= 11.25) {
+  if (degrees >= 348.75 || degrees <= 11.25) {
     windDegree.innerHTML = "N";
   } else if (degrees >= 11.25 && degrees <= 33.75) {
     windDegree.innerHTML = "NNE";
