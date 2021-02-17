@@ -438,8 +438,7 @@ Image changes
   height: 50px;
   background-color: #000;
   border-radius: 30px;
-  position: absolute;
-  top: 100;
+  position: relative;
 }
 .cloud_style_1::before {
   content: " ";
@@ -450,7 +449,7 @@ Image changes
   left: 25px;
   background-color: #000;
   border-radius: 30px;
-  position: absolute;
+  position: relative;
   box-shadow: 40px -10px 0 20px #000, 80px -10px 0 10px #000,
     115px -5px 0 -10px #000;
 }
@@ -521,7 +520,7 @@ Image changes
 @keyframes rain {
   0% {
     opacity: 0;
-    transform: translate(0, 50px) rotate(25deg);
+    transform: translate(0, 0) rotate(25deg);
   }
   100% {
     opacity: 0.2px;
@@ -566,7 +565,7 @@ Image changes
 @keyframes snowfall {
   0% {
     opacity: 0;
-    transform: translate(-30px, 50px);
+    transform: translate(-30px, 0);
   }
   100% {
     opacity: 0.2px;
@@ -606,30 +605,154 @@ Image changes
 }
 
 /* Thunder */
-.bolt {
-  height: 50px;
-  width: 50px;
-  background-color: yellow;
-  animation: flicker 1s ease alternate infinite;
-}
-.bolt::before {
-  height: 20px;
-  width: 20px;
-  background-color: tomato;
-}
-.bolt::after {
-  height: 60px;
-  width: 60px;
-  background-color: teal;
+.thunder {
+  animation: flicker 2s infinite, bob 3s ease-in-out infinite;
 }
 
+.bolt {
+  position: absolute;
+  width: 80px;
+  height: 800px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+.bolt::before,
+.bolt::after {
+  content: "";
+  position: absolute;
+}
+
+.bolt::before {
+  width: 0;
+  height: 0;
+  left: -4px;
+  top: 5px;
+  border-style: solid;
+  border-width: 0px 20px 27px 80px;
+  border-color: transparent transparent #fbeb36 transparent;
+  transform: rotate(-60deg);
+}
+.bolt::after {
+  width: 0;
+  height: 0;
+  left: 4px;
+  top: -40px;
+  border-style: solid;
+  border-width: 0px 20px 27px 80px;
+  border-color: transparent transparent #fbeb36 transparent;
+  transform: rotate(-60deg) scaleY(-1) scaleX(-1);
+}
+.bolt-mini {
+  height: 150px;
+}
 @keyframes flicker {
   0% {
     opacity: 1;
-    transform: translate(60px, 50px) rotateY(180deg) rotateX(180deg);
+  }
+  4% {
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.6;
+  }
+  8% {
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* Sunny */
+.sun {
+  width: 150px;
+  height: 150px;
+  background-color: #000;
+  border-radius: 50%;
+  position: relative;
+}
+.shine {
+  width: 180px;
+  height: 140px;
+}
+.ray {
+  width: 0;
+  height: 0;
+  left: 4px;
+  top: -40px;
+  border-style: solid;
+  border-width: 0px 20px 30px 40px;
+  border-color: transparent transparent #fbeb36 transparent;
+  /*animation: sunshine 0.8s infinite ease-out;*/
+}
+
+.ray:nth-child(1) {
+  height: 15px;
+  top: 5px;
+  left: 0%;
+  animation-delay: -1s;
+}
+.ray:nth-child(2) {
+  height: 20px;
+  top: 5px;
+  left: -10%;
+  animation-delay: -1.4s;
+}
+.ray:nth-child(3) {
+  height: 15px;
+  top: 5px;
+  left: -20%;
+  animation-delay: -1.6s;
+}
+.ray:nth-child(4) {
+  height: 10px;
+  top: 10px;
+  left: -30%;
+  animation-delay: -1.2s;
+}
+.ray:nth-child(5) {
+  height: 20px;
+  top: 15px;
+  left: -40%;
+  animation-delay: -1.6s;
+}
+.ray:nth-child(6) {
+  height: 10px;
+  top: 15px;
+  left: -50%;
+  animation-delay: -1.3s;
+}
+.ray:nth-child(7) {
+  height: 15px;
+  top: 15px;
+  left: -60%;
+  animation-delay: -2s;
+}
+.ray:nth-child(8) {
+  height: 10px;
+  top: 15px;
+  left: -70%;
+  animation-delay: -1.8s;
+}
+
+@keyframes sunshine {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(25deg);
   }
   100% {
-    opacity: 0;
-    transform: translate(60px, 50px) rotateY(180deg) rotateX(180deg);
+    opacity: 0.2px;
+    transform: translate(-40px, 100px) rotate(25deg);
   }
 }
