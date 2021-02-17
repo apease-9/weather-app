@@ -9,6 +9,7 @@ Table of Contents:
 7.Footer
 8.Mobile view
 9. Keyframes for mobile view
+10. Image changes
 ================================================== */
 
 /* ========
@@ -424,5 +425,211 @@ Keyframes for mobile view
   }
   100% {
     transform: rotate(0);
+  }
+}
+
+/* ========
+Image changes
+=========== */
+
+/*Rain*/
+.cloud {
+  width: 200px;
+  height: 50px;
+  background-color: #000;
+  border-radius: 30px;
+  position: absolute;
+  top: 100;
+}
+.cloud_style_1::before {
+  content: " ";
+  display: block;
+  width: 50px;
+  height: 50px;
+  top: -20px;
+  left: 25px;
+  background-color: #000;
+  border-radius: 30px;
+  position: absolute;
+  box-shadow: 40px -10px 0 20px #000, 80px -10px 0 10px #000,
+    115px -5px 0 -10px #000;
+}
+.rain {
+  width: 180px;
+  height: 140px;
+}
+.drop {
+  position: relative;
+  float: right;
+  width: 2px;
+  margin: -10px;
+  left: 20px;
+  background: #789;
+  box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);
+  animation: rain 0.8s infinite ease-out;
+}
+
+.drop:nth-child(1) {
+  height: 15px;
+  top: 5px;
+  left: 0%;
+  animation-delay: -1s;
+}
+.drop:nth-child(2) {
+  height: 20px;
+  top: 5px;
+  left: -10%;
+  animation-delay: -1.4s;
+}
+.drop:nth-child(3) {
+  height: 15px;
+  top: 5px;
+  left: -20%;
+  animation-delay: -1.6s;
+}
+.drop:nth-child(4) {
+  height: 10px;
+  top: 10px;
+  left: -30%;
+  animation-delay: -1.2s;
+}
+.drop:nth-child(5) {
+  height: 20px;
+  top: 15px;
+  left: -40%;
+  animation-delay: -1.6s;
+}
+.drop:nth-child(6) {
+  height: 10px;
+  top: 15px;
+  left: -50%;
+  animation-delay: -1.3s;
+}
+.drop:nth-child(7) {
+  height: 15px;
+  top: 15px;
+  left: -60%;
+  animation-delay: -2s;
+}
+.drop:nth-child(8) {
+  height: 10px;
+  top: 15px;
+  left: -70%;
+  animation-delay: -1.8s;
+}
+
+@keyframes rain {
+  0% {
+    opacity: 0;
+    transform: translate(0, 50px) rotate(25deg);
+  }
+  100% {
+    opacity: 0.2px;
+    transform: translate(-40px, 100px) rotate(25deg);
+  }
+}
+
+/* Cloudy */
+.cloud_style_2::before {
+  content: " ";
+  display: block;
+  width: 50px;
+  height: 50px;
+  top: -20px;
+  left: 20px;
+  background-color: #000;
+  border-radius: 30px;
+  position: absolute;
+  box-shadow: 80px 0 0 10px #000, 40px 0 0 20px #000, 110px 0 0 -5px #000,
+    80px 25px 0 10px #000, 40px 25px 0 20px #000, 0 40px 0 -5px #000,
+    120px 22px 0 10px #000, 100px -30px 0 10px #fff, 60px -30px 0 10px #fff,
+    130px -10px 0 10px #fff;
+}
+
+/*Snow*/
+.snow {
+  width: 180px;
+  height: 140px;
+}
+.fall {
+  position: relative;
+  float: right;
+  width: 6px;
+  height: 6px;
+  margin: -10px;
+  left: 20px;
+  background: #789;
+  border-radius: 50%;
+  box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);
+  animation: snowfall 3s infinite ease-out;
+}
+@keyframes snowfall {
+  0% {
+    opacity: 0;
+    transform: translate(-30px, 50px);
+  }
+  100% {
+    opacity: 0.2px;
+    transform: translate(-60px, 100px);
+  }
+}
+.fall:nth-child(1) {
+  animation-delay: 0;
+}
+.fall:nth-child(2) {
+  left: -5%;
+  animation-delay: -1s;
+}
+.fall:nth-child(3) {
+  left: -15%;
+  animation-delay: -0.25s;
+}
+.fall:nth-child(4) {
+  left: -25%;
+  animation-delay: -2s;
+}
+.fall:nth-child(5) {
+  left: -35%;
+  animation-delay: -1.5s;
+}
+.fall:nth-child(6) {
+  left: -45%;
+  animation-delay: -2.5s;
+}
+.fall:nth-child(7) {
+  left: -55%;
+  animation-delay: -3s;
+}
+.fall:nth-child(8) {
+  left: -65%;
+  animation-delay: -1.9s;
+}
+
+/* Thunder */
+.bolt {
+  height: 50px;
+  width: 50px;
+  background-color: yellow;
+  animation: flicker 1s ease alternate infinite;
+}
+.bolt::before {
+  height: 20px;
+  width: 20px;
+  background-color: tomato;
+}
+.bolt::after {
+  height: 60px;
+  width: 60px;
+  background-color: teal;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+    transform: translate(60px, 50px) rotateY(180deg) rotateX(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(60px, 50px) rotateY(180deg) rotateX(180deg);
   }
 }

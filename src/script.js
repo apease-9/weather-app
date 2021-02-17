@@ -70,6 +70,7 @@ function showForecast(response) {
   document.querySelector(".tempNum1").innerHTML = Math.round(
     response.data.daily[1].temp.max
   );
+
   //Mac and min forcast
   document.querySelector(".tempNum1-1").innerHTML = Math.round(
     response.data.daily[1].temp.min
@@ -258,15 +259,18 @@ function GetTime() {
     "December",
   ];
   let month = months[now.getMonth()];
+
   let todayDate = document.querySelector(".date");
 
-  todayDate.innerHTML = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}`;
+  let dateFormat = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}`;
+  todayDate.innerHTML = dateFormat;
   document.querySelector(".date1").innerHTML = `${days[now.getDay() + 1]}`;
   document.querySelector(".date2").innerHTML = `${days[now.getDay() + 2]}`;
   document.querySelector(".date3").innerHTML = `${days[now.getDay() + 3]}`;
   document.querySelector(".date4").innerHTML = `${days[now.getDay() + 4]}`;
   document.querySelector(".date5").innerHTML = `${days[now.getDay() + 5]}`;
-  setTimeout(GetTime, 500);
+
+  setTimeout(GetTime, 1000);
 }
 GetTime();
 

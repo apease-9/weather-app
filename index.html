@@ -87,10 +87,10 @@
       <!--current city display-->
       <div id="currentCity">
         <p>
-          Your current time: <span class="date">week month day year time</span>
+          <span class="date">--</span>
         </p>
         <h1 id="search">Raleigh</h1>
-        <p id="timezoneP">Current time: <span class="timezone"></span></p>
+
         <p id="coordinates"></p>
       </div>
       <br /><br />
@@ -110,11 +110,21 @@
           </ul>
         </div>
         <div class="imgBox cbox">
-          <img
-            class="img-0 icon"
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-            alt="It is cloudy"
-          />
+          <div class="weather-img">
+            <div class="rain-cloud">
+              <div class="cloud cloud_style_1"></div>
+              <div class="weather-ani thunder">
+                <div class="bolt"></div>
+                <div class=" "></div>
+                <div class=" "></div>
+                <div class=" "></div>
+                <div class=" "></div>
+                <div class=" "></div>
+                <div class=" "></div>
+                <div class=" "></div>
+              </div>
+            </div>
+          </div>
           <h2 id="weatherDescription" class="weatherD"></h2>
         </div>
         <div class="dateBox cbox">
@@ -290,9 +300,6 @@
             >Weather Data Provider:
             <a href="https://openweathermap.org/">OpenWeather</a></span
           >
-          <br />
-          Time Zone Data Provider:
-          <a href="https://ipgeolocation.io/"> ipgeolocation </a>
         </p>
       </footer>
     </div>
