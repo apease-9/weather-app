@@ -560,7 +560,7 @@ Image changes
   background: #789;
   border-radius: 50%;
   box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);
-  animation: snowfall 3s infinite ease-out;
+  animation: snowfall 5s infinite ease-out;
 }
 @keyframes snowfall {
   0% {
@@ -573,7 +573,7 @@ Image changes
   }
 }
 .fall:nth-child(1) {
-  animation-delay: 0;
+  animation-delay: -4.18;
 }
 .fall:nth-child(2) {
   left: -5%;
@@ -581,27 +581,27 @@ Image changes
 }
 .fall:nth-child(3) {
   left: -15%;
-  animation-delay: -0.25s;
+  animation-delay: -3.5s;
 }
 .fall:nth-child(4) {
   left: -25%;
-  animation-delay: -2s;
+  animation-delay: -4.9s;
 }
 .fall:nth-child(5) {
   left: -35%;
-  animation-delay: -1.5s;
+  animation-delay: -0.75s;
 }
 .fall:nth-child(6) {
   left: -45%;
-  animation-delay: -2.5s;
+  animation-delay: -2.7s;
 }
 .fall:nth-child(7) {
   left: -55%;
-  animation-delay: -3s;
+  animation-delay: -4.25s;
 }
 .fall:nth-child(8) {
   left: -65%;
-  animation-delay: -1.9s;
+  animation-delay: -1.3s;
 }
 
 /* Thunder */
@@ -675,84 +675,122 @@ Image changes
 }
 
 /* Sunny */
-.sun {
-  width: 150px;
+.sunny {
   height: 150px;
-  background-color: #000;
-  border-radius: 50%;
+  width: 150px;
   position: relative;
+  margin: 0 auto;
+  top: calc(50% - 65px);
+}
+
+.sun_style_1 {
+  height: 150px;
+  width: 150px;
+  z-index: 1;
+  background: #ffeb90;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0px 0px 100px rgb(252, 252, 144);
 }
 .shine {
-  width: 180px;
-  height: 140px;
+  animation: sunshine 15s linear infinite;
+  box-shadow: 0px 0px 100px rgb(255, 239, 97);
+  height: 150px;
+  width: 150px;
 }
 .ray {
-  width: 0;
-  height: 0;
-  left: 4px;
-  top: -40px;
-  border-style: solid;
-  border-width: 0px 20px 30px 40px;
-  border-color: transparent transparent #fbeb36 transparent;
-  /*animation: sunshine 0.8s infinite ease-out;*/
+  background: #ffdd4a;
+  width: 150px;
+  height: 150px;
+  position: absolute;
 }
 
 .ray:nth-child(1) {
-  height: 15px;
+  transform: rotate(30deg);
+}
+.ray:nth-child(2) {
+  transform: rotate(60deg);
+}
+@keyframes sunshine {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*Misty*/
+.fog {
+  width: 180px;
+  height: 140px;
+}
+.misty {
+  position: relative;
+  float: right;
+  width: 2px;
+  margin: -10px;
+  left: 20px;
+  background: #789;
+  box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);
+  animation: mist 4s infinite ease-out;
+}
+
+.misty:nth-child(1) {
+  height: 20%;
   top: 5px;
   left: 0%;
   animation-delay: -1s;
 }
-.ray:nth-child(2) {
-  height: 20px;
-  top: 5px;
+.misty:nth-child(2) {
+  height: 15%;
+  top: -10%;
   left: -10%;
   animation-delay: -1.4s;
 }
-.ray:nth-child(3) {
-  height: 15px;
-  top: 5px;
+.misty:nth-child(3) {
+  height: 30%;
+  top: -20%;
   left: -20%;
   animation-delay: -1.6s;
 }
-.ray:nth-child(4) {
-  height: 10px;
-  top: 10px;
+.misty:nth-child(4) {
+  height: 35%;
+  top: -30%;
   left: -30%;
   animation-delay: -1.2s;
 }
-.ray:nth-child(5) {
-  height: 20px;
-  top: 15px;
+.misty:nth-child(5) {
+  height: 20%;
+  top: -40%;
   left: -40%;
   animation-delay: -1.6s;
 }
-.ray:nth-child(6) {
-  height: 10px;
-  top: 15px;
+.misty:nth-child(6) {
+  height: 35%;
+  top: -50%;
   left: -50%;
   animation-delay: -1.3s;
 }
-.ray:nth-child(7) {
-  height: 15px;
-  top: 15px;
+.misty:nth-child(7) {
+  height: 40%;
+  top: -60%;
   left: -60%;
   animation-delay: -2s;
 }
-.ray:nth-child(8) {
-  height: 10px;
-  top: 15px;
+.misty:nth-child(8) {
+  height: 45%;
+  top: -70%;
   left: -70%;
   animation-delay: -1.8s;
 }
-
-@keyframes sunshine {
+@keyframes mist {
   0% {
     opacity: 0;
-    transform: translate(0, 0) rotate(25deg);
+    transform: translate(0, 0) rotate(90deg);
   }
   100% {
     opacity: 0.2px;
-    transform: translate(-40px, 100px) rotate(25deg);
+    transform: translate(-40px, 0) rotate(90deg);
   }
 }
