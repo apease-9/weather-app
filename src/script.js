@@ -58,6 +58,70 @@ function showTemperature(response) {
   //forecast (goes to function showForecast)
   let forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
   axios.get(forecastURL).then(showForecast);
+  //current weather
+  document.getElementById("weatherDescription").innerHTML =
+    response.data.weather[0].description;
+  let num = response.data.weather[0].id;
+  let main = document.querySelector(".main-img");
+  let style = document.querySelector(".img-style");
+  let ani = document.querySelector(".img-ani");
+  let child = document.querySelectorAll(".img-ani-child");
+  if (num > 200 && num < 300) {
+    main.classList.add("thunder_storm");
+    style.classList.add("cloud");
+    style.classList.add("cloud_style_1");
+    ani.classList.add("thunder");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.add("bolt");
+    }
+  }
+  if ((num > 300 && num < 400) || (num > 500 && num < 600)) {
+    main.classList.add("rainy");
+    style.classList.add("cloud");
+    style.classList.add("cloud_style_1");
+    ani.classList.add("rain");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.add("drop");
+    }
+  }
+  if (num > 600 && num < 700) {
+    main.classList.add("snowing");
+    style.classList.add("cloud");
+    style.classList.add("cloud_style_1");
+    ani.classList.add("snow");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.add("fall");
+    }
+  }
+  if (num > 700 && num < 800) {
+    main.classList.add("foggy");
+    style.classList.add("mist");
+    style.classList.add("mist_style_1");
+    ani.classList.add("fog");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.add("misty");
+    }
+  }
+  if (num > 800 && num < 900) {
+    main.classList.add("cloudy");
+    style.classList.add("cloud");
+    style.classList.add("cloud_style_2");
+    ani.classList.add("cloudy");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.add("cloud-y");
+    }
+  }
+  if (num === 800) {
+    main.classList.add("sunny");
+    style.classList.add("sun");
+    style.classList.add("sun_style_1");
+    ani.classList.add("shine");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.add("ray");
+    }
+  } else {
+    console.log("Error at change icon");
+  }
 }
 ////////////////////Five Day forecast, description, and max/min for the day////////////////////////
 function showForecast(response) {
@@ -105,8 +169,6 @@ function showForecast(response) {
   );
 
   //Weather Descriptions
-  document.getElementById("weatherDescription").innerHTML =
-    response.data.daily[0].weather[0].description;
   document.getElementById("weather-1").innerHTML =
     response.data.daily[1].weather[0].description;
   document.getElementById("weather-2").innerHTML =
@@ -119,6 +181,8 @@ function showForecast(response) {
     response.data.daily[5].weather[0].description;
 
   //Make an if statement to change weather icon based on what the main idea is (ie. rain, snow, sun, cloudy)
+  let weather_img = response.data.daily[0].weather[0].id;
+  console.log(weather_img);
 }
 
 ////////////////////////////////////Initial Loadup/////////////////////////////////////////////
