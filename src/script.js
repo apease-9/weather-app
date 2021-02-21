@@ -66,14 +66,13 @@ function showTemperature(response) {
   let style = document.querySelector(".img-style");
   let ani = document.querySelector(".img-ani");
   let child = document.querySelectorAll(".img-ani-child");
+  let child_bolt = document.querySelector(".img-ani-child");
   if (num > 200 && num < 300) {
     main.classList.add("thunder_storm");
     style.classList.add("cloud");
     style.classList.add("cloud_style_1");
     ani.classList.add("thunder");
-    for (let i = 0; i < child.length; i++) {
-      child[i].classList.add("bolt");
-    }
+    child_bolt.classList.add("bolt");
   }
   if ((num > 300 && num < 400) || (num > 500 && num < 600)) {
     main.classList.add("rainy");
@@ -181,8 +180,31 @@ function showForecast(response) {
     response.data.daily[5].weather[0].description;
 
   //Make an if statement to change weather icon based on what the main idea is (ie. rain, snow, sun, cloudy)
-  let weather_img = response.data.daily[0].weather[0].id;
-  console.log(weather_img);
+  let num1 = 701; //response.data.daily[1].weather[0].id;
+  console.log(num1);
+  let main = document.querySelector(".img-style-1");
+  if (num1 > 200 && num1 < 300) {
+    console.log("thunder");
+  }
+  if ((num1 > 300 && num1 < 400) || (num1 > 500 && num1 < 600)) {
+    console.log("rainy");
+  }
+  if (num1 > 600 && num1 < 700) {
+    console.log("snowy");
+  }
+  if (num1 > 700 && num1 < 800) {
+    console.log("foggy");
+  }
+  if (num1 > 800 && num1 < 900) {
+    main.classList.add("f_clouds");
+    console.log("cloudy");
+  }
+  if (num1 === 800) {
+    main.classList.add("f_sun");
+    console.log("sunny");
+  } else {
+    console.log("Error at change icon");
+  }
 }
 
 ////////////////////////////////////Initial Loadup/////////////////////////////////////////////
