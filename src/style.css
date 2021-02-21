@@ -38,7 +38,8 @@ body {
   height: 100%;
   font-family: "Yusei Magic", sans-serif;
   border-radius: 50px;
-  max-width: 70%;
+  width: 70%;
+  max-width: 700px;
   align-content: center;
   box-shadow: rgba(37, 39, 89, 0.7) 0px 8px 8px 0;
 }
@@ -610,16 +611,16 @@ Image changes
 }
 
 .bolt {
-  position: absolute;
+  position: relative;
   width: 80px;
-  height: 800px;
+  height: 50px;
   margin: 0 auto;
   left: 0;
   right: 0;
 }
 .bolt::before,
 .bolt::after {
-  content: "";
+  content: " ";
   position: absolute;
 }
 
@@ -643,9 +644,7 @@ Image changes
   border-color: transparent transparent #fbeb36 transparent;
   transform: rotate(-60deg) scaleY(-1) scaleX(-1);
 }
-.bolt-mini {
-  height: 150px;
-}
+
 @keyframes flicker {
   0% {
     opacity: 1;
@@ -721,6 +720,28 @@ Image changes
 }
 
 /*Misty*/
+.mist_style_1::before {
+  content: " ";
+  display: block;
+  width: 50px;
+  height: 50px;
+  top: -20px;
+  left: 25px;
+  background-color: #000;
+  border-radius: 30px;
+  position: relative;
+  box-shadow: -17px -5px 0 15px #000, 100px -5px 0 15px #000,
+    20px -15px 0 15px #000, 70px -25px 0 15px #000;
+}
+.mist {
+  width: 180px;
+  height: 39px;
+  top: 20px;
+  background-color: #000;
+  border-radius: 20px;
+  position: relative;
+}
+
 .fog {
   width: 180px;
   height: 140px;
@@ -733,64 +754,84 @@ Image changes
   left: 20px;
   background: #789;
   box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);
-  animation: mist 4s infinite ease-out;
 }
 
 .misty:nth-child(1) {
-  height: 20%;
-  top: 5px;
-  left: 0%;
-  animation-delay: -1s;
+  height: 45%;
+  left: -20%;
+  top: 5%;
+  animation: mist 10s infinite alternate;
 }
 .misty:nth-child(2) {
-  height: 15%;
-  top: -10%;
-  left: -10%;
-  animation-delay: -1.4s;
+  height: 45%;
+  left: -70%;
+  top: 5%;
+  animation: mist 10s infinite alternate;
 }
 .misty:nth-child(3) {
-  height: 30%;
-  top: -20%;
+  height: 50%;
   left: -20%;
-  animation-delay: -1.6s;
+  top: 15%;
+  animation: misty 10s infinite alternate;
 }
 .misty:nth-child(4) {
-  height: 35%;
-  top: -30%;
-  left: -30%;
-  animation-delay: -1.2s;
+  height: 50%;
+  left: -80%;
+  top: 15%;
+  animation: misty 10s infinite alternate;
 }
 .misty:nth-child(5) {
-  height: 20%;
-  top: -40%;
-  left: -40%;
-  animation-delay: -1.6s;
+  height: 45%;
+  left: -30%;
+  top: 30%;
+  animation: mist 10s infinite alternate;
 }
 .misty:nth-child(6) {
-  height: 35%;
-  top: -50%;
-  left: -50%;
-  animation-delay: -1.3s;
-}
-.misty:nth-child(7) {
-  height: 40%;
-  top: -60%;
-  left: -60%;
-  animation-delay: -2s;
-}
-.misty:nth-child(8) {
   height: 45%;
-  top: -70%;
-  left: -70%;
-  animation-delay: -1.8s;
+  left: -80%;
+  top: 30%;
+  animation: mist 10s infinite alternate;
 }
+
 @keyframes mist {
   0% {
-    opacity: 0;
+    opacity: 0.2;
     transform: translate(0, 0) rotate(90deg);
   }
   100% {
-    opacity: 0.2px;
+    opacity: 0.8;
     transform: translate(-40px, 0) rotate(90deg);
   }
+}
+@keyframes misty {
+  0% {
+    opacity: 0.8;
+    transform: translate(-40px, 0) rotate(-90deg);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translate(10px, 0) rotate(-90deg);
+  }
+}
+
+/*Five Day Forecast */
+.f_sun {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: yellow;
+}
+.f_clouds::before {
+  content: " ";
+  left: -30px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 32px 0 0 4px #000, 16px 0 0 8px #000, 44px 0 0 -2px #000,
+    32px 10px 0 4px #000, 16px 10px 0 8px #000, 0 16px 0 -2px #000,
+    48px 8.8px 0 4px #000, 40px -12px 0 4px #fff, 24px -12px 0 4px #fff,
+    52px -4px 0 4px #fff;
 }
