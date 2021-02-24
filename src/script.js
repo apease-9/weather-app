@@ -4,6 +4,7 @@ alert(
 
 //////////////////////////Change Temperature///////////////////////////////////////
 function showTemperature(response) {
+  let apiKey = "100f8a7c29c0b02275197751bc3ff692";
   console.log(response);
   document.querySelector("#search").innerHTML = response.data.name;
   let temperature = document.querySelector(".tempNum");
@@ -60,7 +61,13 @@ function showTemperature(response) {
   humidity.innerHTML = Math.round(response.data.main.humidity);
 
   //forecast (goes to function showForecast)
-  let forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
+  let units = null;
+  if (document.querySelector("input[name=switchUnits]").checked) {
+    units = "imperial";
+  } else {
+    units = "metric";
+  }
+  let forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=${units}&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
   axios.get(forecastURL).then(showForecast);
   //current weather
   document.getElementById("weatherDescription").innerHTML =
@@ -276,12 +283,49 @@ function showForecast(response) {
   img5.src = `http://openweathermap.org/img/wn/${num5}@2x.png`;
 }
 
-////////////////////////////////////Initial Loadup/////////////////////////////////////////////
+///////////////////Change units via switch//////////////////////////////////
+let unitSwitch = document.querySelector("input[name=switchUnits]");
+unitSwitch.addEventListener("change", switchUnits);
+function switchUnits() {
+  let cF = Array.prototype.slice.call(document.querySelectorAll("span.unit"));
+  let km = document.querySelector(".unit1");
+  let kmNum = document.querySelector(".unit-1");
+  let cFNum = Array.prototype.slice.call(document.querySelectorAll(".unit-0"));
+  let units = null;
+  if (unitSwitch.checked) {
+    km.innerHTML = "mph";
+    kmNum.innerHTML = Math.round(kmNum.innerHTML * 0.621371);
+    cF.forEach((element) => {
+      element.innerHTML = "°F";
+    });
+    cFNum.forEach((element) => {
+      element.innerHTML = Math.round(element.innerHTML * (9 / 5) + 32);
+    });
+    units = "imperial";
+  } else {
+    km.innerHTML = "km/h";
+    kmNum.innerHTML = Math.round(kmNum.innerHTML * 1.60934);
+    cF.forEach((element) => {
+      element.innerHTML = "°C";
+    });
+    cFNum.forEach((element) => {
+      element.innerHTML = Math.round((element.innerHTML - 32) * (5 / 9));
+    });
+    units = "metric";
+  }
+}
+/////////////////////////////Initial Loadup///////////////////////////////////////////////////////////////
+let units = null;
+if (document.querySelector("input[name=switchUnits]").checked) {
+  units = "imperial";
+} else {
+  units = "metric";
+}
+
 let apiKey = "100f8a7c29c0b02275197751bc3ff692";
 let city = "Raleigh";
 let state = "NC";
 let country = "US";
-let units = "metric";
 let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country}&units=${units}`;
 axios.get(`${apiURL}&appid=${apiKey}`).then(showTemperature);
 
@@ -296,9 +340,14 @@ function cityC(event) {
   let countryInput = document.querySelector(".countryInput").value.trim();
 
   if (cityInput.length > 0) {
+    let units = null;
+    if (document.querySelector("input[name=switchUnits]").checked) {
+      units = "imperial";
+    } else {
+      units = "metric";
+    }
     let city = `${cityInput},${stateInput},${countryInput}`;
     let apiKey = "100f8a7c29c0b02275197751bc3ff692";
-    let units = "metric";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
     console.log(fetch(apiURL));
     function cityExists(apiURL, callback) {
@@ -318,10 +367,16 @@ function cityC(event) {
 ///////////////////////Change location with current location/////////////////////////
 function showPosition(position) {
   navigator.geolocation.getCurrentPosition(function (position) {
+    let units = null;
+    if (document.querySelector("input[name=switchUnits]").checked) {
+      units = "imperial";
+    } else {
+      units = "metric";
+    }
     let lon = position.coords.longitude;
     let lat = position.coords.latitude;
     let apiKey = "100f8a7c29c0b02275197751bc3ff692";
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
     axios.get(apiURL).then(showTemperature);
   });
 }
@@ -330,6 +385,7 @@ let button = document.querySelector("#currentLocation");
 button.addEventListener("click", showPosition);
 
 ////////////////////Change city via popular city nav////////////////////////
+
 let tokyo = document.querySelector("#Tokyo");
 let hk = document.querySelector("#Hong-Kong");
 let paris = document.querySelector("#Paris");
@@ -368,7 +424,9 @@ function changeRome() {
 
 //////////////////////////////////Change Date/////////////////////////////////////
 
-function GetTime() {
+let timeSwitch = document.querySelector("input[name=switchTime]");
+timeSwitch.addEventListener("change", switchTime);
+function switchTime() {
   function zeroAdd(m) {
     if (m < 10) {
       m = "0" + m;
@@ -414,20 +472,36 @@ function GetTime() {
     "December",
   ];
   let month = months[now.getMonth()];
-
   let todayDate = document.querySelector(".date");
-
-  let dateFormat = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}`;
-  todayDate.innerHTML = dateFormat;
   document.querySelector(".date1").innerHTML = `${days[now.getDay() + 1]}`;
   document.querySelector(".date2").innerHTML = `${days[now.getDay() + 2]}`;
   document.querySelector(".date3").innerHTML = `${days[now.getDay() + 3]}`;
   document.querySelector(".date4").innerHTML = `${days[now.getDay() + 4]}`;
   document.querySelector(".date5").innerHTML = `${days[now.getDay() + 5]}`;
-
-  setTimeout(GetTime, 1000);
+  if (timeSwitch.checked) {
+    let date12Format = null;
+    if (hour === 12) {
+      date12Format = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}PM`;
+      todayDate.innerHTML = date12Format;
+    } else if (hour >= 13 && hour < 24) {
+      date12Format = `${day} ${month} ${date}, ${year}, ${
+        hour - 12
+      }:${minutes}PM`;
+      todayDate.innerHTML = date12Format;
+    } else if (hour === 24) {
+      date12Format = `${day} ${month} ${date}, ${year}, 12:${minutes}AM`;
+      todayDate.innerHTML = date12Format;
+    } else {
+      date12Format = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}AM`;
+      todayDate.innerHTML = date12Format;
+    }
+  } else {
+    let date24Format = `${day} ${month} ${date}, ${year}, ${hour}:${minutes}`;
+    todayDate.innerHTML = date24Format;
+  }
+  setTimeout(switchTime, 1000);
 }
-GetTime();
+switchTime();
 
 /////////////////////Change background based on time/////////////////////
 let hourDay = new Date();
@@ -534,35 +608,6 @@ if (hourColor >= 21 || hourColor < 5) {
   document.getElementById("currentLocation").onmouseout = function () {
     this.style.backgroundColor = "#483475";
   };
-}
-
-///////////////////Change units via switch//////////////////////////////////
-let unitSwitch = document.querySelector("input[name=switchUnits]");
-unitSwitch.addEventListener("change", switchUnits);
-function switchUnits() {
-  let cF = Array.prototype.slice.call(document.querySelectorAll("span.unit"));
-  let km = document.querySelector(".unit1");
-  let kmNum = document.querySelector(".unit-1");
-  let cFNum = Array.prototype.slice.call(document.querySelectorAll(".unit-0"));
-  if (unitSwitch.checked) {
-    km.innerHTML = "mph";
-    kmNum.innerHTML = Math.round(kmNum.innerHTML * 0.621371);
-    cF.forEach((element) => {
-      element.innerHTML = "°F";
-    });
-    cFNum.forEach((element) => {
-      element.innerHTML = Math.round(element.innerHTML * (9 / 5) + 32);
-    });
-  } else {
-    km.innerHTML = "km/h";
-    kmNum.innerHTML = Math.round(kmNum.innerHTML * 1.60934);
-    cF.forEach((element) => {
-      element.innerHTML = "°C";
-    });
-    cFNum.forEach((element) => {
-      element.innerHTML = Math.round((element.innerHTML - 32) * (5 / 9));
-    });
-  }
 }
 
 /////////////////////////popout the burger////////////////////////////////////////
