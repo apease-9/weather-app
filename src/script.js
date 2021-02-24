@@ -1,3 +1,7 @@
+alert(
+  "To see weather in other cities, simply click the menu icon to change to your desired city, or choose one of the popular cities provided. Thank you for using this app."
+);
+
 //////////////////////////Change Temperature///////////////////////////////////////
 function showTemperature(response) {
   console.log(response);
@@ -73,6 +77,13 @@ function showTemperature(response) {
     style.classList.add("cloud_style_1");
     ani.classList.add("thunder");
     child_bolt.classList.add("bolt");
+    main.classList.remove("rainy", "snowing", "foggy", "cloudy", "sunny");
+    style.classList.remove("mist", "sun");
+    style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
+    ani.classList.remove("rain", "snow", "fog", "cloudy", "shine");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.remove("drop", "fall", "misty", "cloud-y", "ray");
+    }
   }
   if ((num > 300 && num < 400) || (num > 500 && num < 600)) {
     main.classList.add("rainy");
@@ -81,6 +92,19 @@ function showTemperature(response) {
     ani.classList.add("rain");
     for (let i = 0; i < child.length; i++) {
       child[i].classList.add("drop");
+    }
+    main.classList.remove(
+      "thunder_storm",
+      "snowing",
+      "foggy",
+      "cloudy",
+      "sunny"
+    );
+    style.classList.remove("mist", "sun");
+    style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
+    ani.classList.remove("thunder", "snow", "fog", "cloudy", "shine");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.remove("bolt", "fall", "misty", "cloud-y", "ray");
     }
   }
   if (num > 600 && num < 700) {
@@ -91,6 +115,13 @@ function showTemperature(response) {
     for (let i = 0; i < child.length; i++) {
       child[i].classList.add("fall");
     }
+    main.classList.remove("rainy", "thunder_storm", "foggy", "cloudy", "sunny");
+    style.classList.remove("mist", "sun");
+    style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
+    ani.classList.remove("rain", "thunder", "fog", "cloudy", "shine");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.remove("drop", "bolt", "misty", "cloud-y", "ray");
+    }
   }
   if (num > 700 && num < 800) {
     main.classList.add("foggy");
@@ -99,6 +130,19 @@ function showTemperature(response) {
     ani.classList.add("fog");
     for (let i = 0; i < child.length; i++) {
       child[i].classList.add("misty");
+    }
+    main.classList.remove(
+      "rainy",
+      "thunder_storm",
+      "snowing",
+      "cloudy",
+      "sunny"
+    );
+    style.classList.remove("cloud", "sun");
+    style.classList.remove("cloud_style_1", "cloud_style_2", "sun_style_1");
+    ani.classList.remove("rain", "thunder", "snow", "cloudy", "shine");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.remove("drop", "bolt", "fall", "cloud-y", "ray");
     }
   }
   if (num > 800 && num < 900) {
@@ -109,6 +153,19 @@ function showTemperature(response) {
     for (let i = 0; i < child.length; i++) {
       child[i].classList.add("cloud-y");
     }
+    main.classList.remove(
+      "rainy",
+      "thunder_storm",
+      "snowing",
+      "foggy",
+      "sunny"
+    );
+    style.classList.remove("mist", "sun");
+    style.classList.remove("cloud_style_1", "mist_style_1", "sun_style_1");
+    ani.classList.remove("rain", "thunder", "snow", "fog", "shine");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.remove("drop", "bolt", "fall", "misty", "ray");
+    }
   }
   if (num === 800) {
     main.classList.add("sunny");
@@ -117,6 +174,19 @@ function showTemperature(response) {
     ani.classList.add("shine");
     for (let i = 0; i < child.length; i++) {
       child[i].classList.add("ray");
+    }
+    main.classList.remove(
+      "rainy",
+      "thunder_storm",
+      "snowing",
+      "foggy",
+      "cloudy"
+    );
+    style.classList.remove("mist", "cloud");
+    style.classList.remove("cloud_style_1", "mist_style_1", "cloud_style_2");
+    ani.classList.remove("rain", "thunder", "snow", "fog", "cloudy");
+    for (let i = 0; i < child.length; i++) {
+      child[i].classList.remove("drop", "bolt", "fall", "misty", "cloud-y");
     }
   } else {
     console.log("Error at change icon");
@@ -180,31 +250,30 @@ function showForecast(response) {
     response.data.daily[5].weather[0].description;
 
   //Make an if statement to change weather icon based on what the main idea is (ie. rain, snow, sun, cloudy)
-  let num1 = 701; //response.data.daily[1].weather[0].id;
+  let num1 = response.data.daily[1].weather[0].icon;
   console.log(num1);
-  let main = document.querySelector(".img-style-1");
-  if (num1 > 200 && num1 < 300) {
-    console.log("thunder");
-  }
-  if ((num1 > 300 && num1 < 400) || (num1 > 500 && num1 < 600)) {
-    console.log("rainy");
-  }
-  if (num1 > 600 && num1 < 700) {
-    console.log("snowy");
-  }
-  if (num1 > 700 && num1 < 800) {
-    console.log("foggy");
-  }
-  if (num1 > 800 && num1 < 900) {
-    main.classList.add("f_clouds");
-    console.log("cloudy");
-  }
-  if (num1 === 800) {
-    main.classList.add("f_sun");
-    console.log("sunny");
-  } else {
-    console.log("Error at change icon");
-  }
+  let img1 = document.querySelector(".img1");
+  img1.src = `http://openweathermap.org/img/wn/${num1}@2x.png`;
+
+  let num2 = response.data.daily[2].weather[0].icon;
+  console.log(num2);
+  let img2 = document.querySelector(".img2");
+  img2.src = `http://openweathermap.org/img/wn/${num2}@2x.png`;
+
+  let num3 = response.data.daily[3].weather[0].icon;
+  console.log(num3);
+  let img3 = document.querySelector(".img3");
+  img3.src = `http://openweathermap.org/img/wn/${num3}@2x.png`;
+
+  let num4 = response.data.daily[4].weather[0].icon;
+  console.log(num4);
+  let img4 = document.querySelector(".img4");
+  img4.src = `http://openweathermap.org/img/wn/${num4}@2x.png`;
+
+  let num5 = response.data.daily[5].weather[0].icon;
+  console.log(num5);
+  let img5 = document.querySelector(".img5");
+  img5.src = `http://openweathermap.org/img/wn/${num5}@2x.png`;
 }
 
 ////////////////////////////////////Initial Loadup/////////////////////////////////////////////
