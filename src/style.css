@@ -144,9 +144,7 @@ City Change Form, Current Location Button, and Poplar Cities
   min-height: fit-content;
   justify-content: space-around;
 }
-.popular {
-  padding-left: 20px;
-}
+
 .pop-links {
   display: flex;
   width: 90%;
