@@ -39,7 +39,7 @@ body {
   font-family: "Yusei Magic", sans-serif;
   border-radius: 50px;
   width: 70%;
-  max-width: 700px;
+  max-width: 800px;
   align-content: center;
   box-shadow: rgba(37, 39, 89, 0.7) 0px 8px 8px 0;
 }
@@ -51,10 +51,6 @@ Large aspects
 }
 a {
   text-decoration: none;
-}
-.icon {
-  background: white;
-  justify-self: center;
 }
 .weatherD {
   text-transform: capitalize;
@@ -178,24 +174,27 @@ Current City Display
   display: flex;
   justify-content: space-around;
   flex-flow: wrap;
-  border: 2px solid;
 }
 .currentWeather li {
   display: block;
   margin: 0;
 }
 .cbox {
-  border: none;
-  align-content: center;
-  padding: 10px;
-  width: 30%;
-  height: 30%;
+  margin: 0;
+  padding: 0;
+}
+.imgBox {
+  text-align: center;
+}
+.extraBox,
+.dateBox {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .dateBox {
-  align-content: right;
-  width: 25%;
-  height: 25%;
+  padding-left: 20px;
 }
+
 #tempNow {
   font-size: 24px;
   justify-content: center;
@@ -228,7 +227,7 @@ Current City Display
   padding-left: 5px;
   width: 80%;
   height: 80%;
-  border: 1px solid;
+  border-top: 1px solid;
   margin: 0 auto;
 }
 .future h3 {
@@ -238,6 +237,10 @@ Current City Display
 .highLow {
   display: flex;
   flex-flow: wrap;
+}
+.icon {
+  background: transparent;
+  justify-self: center;
 }
 /* ========
 Footer
@@ -265,7 +268,7 @@ Mobile View
   background-color: rgb(17, 15, 11);
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 20000px) {
   body {
     overflow-x: hidden;
   }
@@ -274,24 +277,23 @@ Mobile View
     right: 0;
     height: 92vh;
     top: 2;
-    background-color: blanchedalmond;
+    background-color: rgb(206, 204, 204);
     display: flex;
     text-align: center;
     flex-direction: column;
     box-sizing: border-box;
     align-items: center;
     width: 50%;
+    max-width: 450px;
     transform: translateX(100%);
     transition: transform 300ms cubic-bezier(0.5, 0, 0.5, 1);
+    z-index: 2;
+  }
+  .fiveDay {
+    transform: scale(0.9);
+    width: 110%;
   }
 
-  .popular {
-    display: none;
-  }
-  .pop-links {
-    flex-direction: column;
-    padding-top: 30px;
-  }
   .burger {
     display: block;
     cursor: pointer;
@@ -327,6 +329,12 @@ Mobile View
   }
 }
 
+@media screen and (max-width: 950px) {
+  .fiveDay {
+    transform: scale(0.8);
+    width: 110%;
+  }
+}
 /* ========
 Keyframes for mobile view
 =========== */
@@ -338,11 +346,11 @@ Keyframes for mobile view
   }
 
   60% {
-    transform: translateX(-1020%);
+    transform: translateX(-700px);
   }
 
   100% {
-    transform: translateX(-1000%);
+    transform: translateX(-500px);
   }
 }
 @keyframes spinLine-1 {
@@ -381,11 +389,11 @@ Keyframes for mobile view
 /* Exits */
 @keyframes boomerang_out {
   0% {
-    transform: translateX(-1000%);
+    transform: translateX(-500px);
   }
 
   60% {
-    transform: translateX(-1010%);
+    transform: translateX(-700px);
   }
 
   100% {
@@ -544,6 +552,7 @@ Image changes
     80px 25px 0 10px #000, 40px 25px 0 20px #000, 0 40px 0 -5px #000,
     120px 22px 0 10px #000, 100px -30px 0 10px #fff, 60px -30px 0 10px #fff,
     130px -10px 0 10px #fff;
+  padding-top: 15px;
 }
 
 /*Snow*/
@@ -566,11 +575,11 @@ Image changes
 @keyframes snowfall {
   0% {
     opacity: 0;
-    transform: translate(-30px, 0);
+    transform: translate3d(-30px, 0, 0) scale(1.5);
   }
   100% {
     opacity: 0.2px;
-    transform: translate(-60px, 100px);
+    transform: translate3d(-60px, 80px, 0) scale(0.6);
   }
 }
 .fall:nth-child(1) {
@@ -812,26 +821,4 @@ Image changes
     opacity: 0.2;
     transform: translate(10px, 0) rotate(-90deg);
   }
-}
-
-/*Five Day Forecast */
-.f_sun {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: yellow;
-}
-.f_clouds::before {
-  content: " ";
-  left: -30px;
-  display: block;
-  width: 20px;
-  height: 20px;
-  background-color: #000;
-  border-radius: 30px;
-  position: relative;
-  box-shadow: 32px 0 0 4px #000, 16px 0 0 8px #000, 44px 0 0 -2px #000,
-    32px 10px 0 4px #000, 16px 10px 0 8px #000, 0 16px 0 -2px #000,
-    48px 8.8px 0 4px #000, 40px -12px 0 4px #fff, 24px -12px 0 4px #fff,
-    52px -4px 0 4px #fff;
 }
