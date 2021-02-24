@@ -36,6 +36,26 @@
           <span id="Imperial">Imperial</span>
         </div>
 
+        <div id="current-time">
+          <span id="24-hour">24-hour</span>
+          <label class="switch">
+            <input type="checkbox" name="switchtime" />
+            <span class="slider round"></span>
+          </label>
+          <span id="12-hour">12-hour</span>
+        </div>
+        <br />
+
+        <div id="current-bg">
+          <span id="ani-on">Animations on</span>
+          <label class="switch">
+            <input type="checkbox" name="switchani" />
+            <span class="slider round"></span>
+          </label>
+          <span id="ani-off">Animations off</span>
+        </div>
+        <br />
+
         <!--Change City form-->
         <div class="cityForm">
           <div id="form">
@@ -44,14 +64,10 @@
               <input type="text" placeholder="State" class="stateInput" />
               <input type="text" placeholder="Country" class="countryInput" />
               <br />
-              <div class="buttons">
-                <input
-                  type="submit"
-                  value="Change city"
-                  class="citySubmit"
-                  id="citySubmit"
-                />
-
+              <div class="btn-group">
+                <button type="submit" class="citySubmit" id="citySubmit">
+                  Change city
+                </button>
                 <div id="button">
                   <button id="currentLocation">Use current location</button>
                 </div>
@@ -60,30 +76,31 @@
           </div>
         </div>
         <br />
-
-        <!--Popular city tabs-->
-        <nav class="crumbs">
-          <div class="popular">Popular:</div>
-          <ul class="pop-links">
-            <li class="crumb" id="Tokyo">
-              <a href="#">Tokyo,Japan</a>
-            </li>
-            <li class="crumb" id="Hong-Kong">
-              <a href="#">Hong Kong,China</a>
-            </li>
-            <li class="crumb" id="Paris">
-              <a href="#">Paris,France</a>
-            </li>
-            <li class="crumb" id="NY">
-              <a href="#">New York City,NY,US</a>
-            </li>
-            <li class="crumb" id="Rome">
-              <a href="#">Rome,Italy</a>
-            </li>
-          </ul>
-        </nav>
       </nav>
+      <br />
 
+      <!--Popular city tabs-->
+      <nav class="crumbs">
+        <div class="popular">Popular:</div>
+        <ul class="pop-links">
+          <li class="crumb" id="Tokyo">
+            <a href="#">Tokyo,Japan</a>
+          </li>
+          <li class="crumb" id="Hong-Kong">
+            <a href="#">Hong Kong,China</a>
+          </li>
+          <li class="crumb" id="Paris">
+            <a href="#">Paris,France</a>
+          </li>
+          <li class="crumb" id="NY">
+            <a href="#">New York City,NY,US</a>
+          </li>
+          <li class="crumb" id="Rome">
+            <a href="#">Rome,Italy</a>
+          </li>
+        </ul>
+      </nav>
+      <br />
       <!--current city display-->
       <div id="currentCity">
         <p>
@@ -94,212 +111,141 @@
         <p id="coordinates"></p>
       </div>
       <br /><br />
-      <div class="currentWeather">
-        <div class="extraBox cbox">
-          <ul>
-            <li class="extra">
-              Dew Point: <span id="dew" class="unit-0"></span
-              ><span class="unit">°C</span>
-            </li>
-            <li class="extra">Humidity: <span id="humidity"></span>%</li>
-            <li class="extra">
-              Wind: <span class="windDi"></span
-              ><span class="unit-1" id="wind"></span
-              ><span class="unit1">km/h</span> <span class="windDe"></span>
-            </li>
-          </ul>
-        </div>
-        <div class="imgBox cbox">
-          <h2 id="weatherDescription" class="weatherD"></h2>
-          <br />
-          <br />
-          <div class="weather-img">
-            <div class="main-img">
-              <div class="img-style"></div>
-              <div class="img-ani">
-                <div class="img-ani-child"></div>
-                <div class="img-ani-child"></div>
-                <div class="img-ani-child"></div>
-                <div class="img-ani-child"></div>
-                <div class="img-ani-child"></div>
-                <div class="img-ani-child"></div>
-                <div class="img-ani-child"></div>
-                <div class="img-ani-child"></div>
+      <div class="container">
+        <div class="currentWeather row">
+          <div class="extraBox cbox col-4">
+            <ul>
+              <li class="extra">
+                Dew Point: <span id="dew" class="unit-0"></span
+                ><span class="unit">°C</span>
+              </li>
+              <li class="extra">Humidity: <span id="humidity"></span>%</li>
+              <li class="extra">
+                Wind: <span class="windDi"></span
+                ><span class="unit-1" id="wind"></span
+                ><span class="unit1">km/h</span> <span class="windDe"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="imgBox cbox col-4">
+            <h2 id="weatherDescription" class="weatherD"></h2>
+            <br />
+            <br />
+            <div class="weather-img">
+              <div class="main-img">
+                <div class="img-style"></div>
+                <div class="img-ani">
+                  <div class="img-ani-child"></div>
+                  <div class="img-ani-child"></div>
+                  <div class="img-ani-child"></div>
+                  <div class="img-ani-child"></div>
+                  <div class="img-ani-child"></div>
+                  <div class="img-ani-child"></div>
+                  <div class="img-ani-child"></div>
+                  <div class="img-ani-child"></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="dateBox cbox">
-          <ul>
-            <li id="tempNow">
-              Current Temp:
-              <span class="tempNum unit-0"></span><span class="unit">°C</span>
-            </li>
-            <li>
-              Real Feel:
-              <span class="realFeel unit-0"></span><span class="unit">°C</span>
-            </li>
-            <li>
-              High:
-              <span class="temp-max unit-0"></span><span class="unit">°C</span>
-            </li>
+          <div class="dateBox cbox col-4">
+            <ul>
+              <li id="tempNow">
+                Currently
+                <span class="tempNum unit-0"></span><span class="unit">°C</span>
+              </li>
+              <br />
+              <li>
+                Real Feel:
+                <span class="realFeel unit-0"></span
+                ><span class="unit">°C</span>
+              </li>
+              <li>
+                High:
+                <span class="temp-max unit-0"></span
+                ><span class="unit">°C</span>
+              </li>
 
-            <li>
-              Low:
-              <span class="temp-min unit-0"></span>
-              <span class="unit">°C</span>
-            </li>
-          </ul>
+              <li>
+                Low:
+                <span class="temp-min unit-0"></span
+                ><span class="unit">°C</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <br /><br />
+      <div class="container">
+        <div class="fiveDay row">
+          <div class="day1 future col-2">
+            <p class="date1">Wednesday</p>
+            <img
+              class="img1 icon"
+              src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+              alt="It is snowing"
+            />
+            <p class="weatherD" id="weather-1"></p>
 
-      <div class="fiveDay">
-        <div class="day1 future">
-          <ul>
-            <li class="date1">Wednesday</li>
-            <br />
-            <li>
-              <div class="weather-img-1">
-                <div class="main-img-1">
-                  <div class="img-style-1"></div>
-                  <div class="img-ani-1 .f_stripe">
-                    <div class="img-ani-child-1"></div>
-                    <div class="img-ani-child-1"></div>
-                    <div class="img-ani-child-1"></div>
-                    <div class="img-ani-child-1"></div>
-                    <div class="img-ani-child-1"></div>
-                    <div class="img-ani-child-1"></div>
-                    <div class="img-ani-child-1"></div>
-                    <div class="img-ani-child-1"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <br />
-            <li class="weatherD" id="weather-1"></li>
-            <br />
-            <li>
-              <div class="highLow">
-                <div id="high1">
-                  High: <span class="tempNum1 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-                <div id="low1">
-                  Low: <span class="tempNum1-1 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-              </div>
-            </li>
-          </ul>
+            <span class="tempNum1 unit-0"></span><span class="unit">°C</span>/
+            <span class="tempNum1-1 unit-0"></span><span class="unit">°C</span>
+          </div>
+          <div class="day2 future col-2">
+            <p class="date2">Wednesday</p>
+            <img
+              class="img2 icon"
+              src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+              alt="It is snowing"
+            />
+            <p class="weatherD" id="weather-2"></p>
+            <span class="tempNum2 unit-0"></span><span class="unit">°C</span> /
+            <span class="tempNum2-2 unit-0"></span>
+            <span class="unit">°C</span>
+          </div>
+          <div class="day3 future col-2">
+            <p class="date3">Wednesday</p>
+            <img
+              class="img3 icon"
+              src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+              alt="It is snowing"
+            />
+            <p class="weatherD" id="weather-3"></p>
+            <span class="tempNum3 unit-0"></span
+            ><span class="unit">°C</span> /<span
+              class="tempNum3-3 unit-0"
+            ></span
+            ><span class="unit">°C</span>
+          </div>
+          <div class="day4 future col-2">
+            <p class="date4">Wednesday</p>
+            <img
+              class="img4 icon"
+              src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+              alt="It is snowing"
+            />
+            <p class="weatherD" id="weather-4"></p>
+            <span class="tempNum4 unit-0"></span
+            ><span class="unit">°C</span> /<span
+              class="tempNum4-4 unit-0"
+            ></span
+            ><span class="unit">°C</span>
+          </div>
+          <div class="day5 future col-2">
+            <p class="date5"></p>
+            <img
+              class="img5 icon"
+              src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
+              alt="It is snowing"
+            />
+            <p class="weatherD" id="weather-5"></p>
+            <span class="tempNum5 unit-0"></span
+            ><span class="unit">°C</span> /<span
+              class="tempNum5-5 unit-0"
+            ></span
+            ><span class="unit">°C</span>
+          </div>
+          <br /><br />
         </div>
-        <div class="day2 future">
-          <ul>
-            <li class="date2">Wednesday</li>
-            <li>
-              <img
-                class="img2 icon"
-                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
-                alt="It is snowing"
-              />
-            </li>
-            <li class="weatherD" id="weather-2"></li>
-            <br />
-            <li>
-              <div class="highLow">
-                <div id="high2">
-                  High: <span class="tempNum2 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-                <div id="low2">
-                  Low:
-                  <span class="tempNum2-2 unit-0"></span>
-                  <span class="unit">°C</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="day3 future">
-          <ul>
-            <li class="date3">Wednesday</li>
-            <li>
-              <img
-                class="img3 icon"
-                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
-                alt="It is snowing"
-              />
-            </li>
-            <li class="weatherD" id="weather-3"></li>
-            <br />
-            <li>
-              <div class="highLow">
-                <div id="high3">
-                  High: <span class="tempNum3 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-                <div id="low3">
-                  Low: <span class="tempNum3-3 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="day4 future">
-          <ul>
-            <li class="date4">Wednesday</li>
-            <li>
-              <img
-                class="img1 icon"
-                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
-                alt="It is snowing"
-              />
-            </li>
-            <li class="weatherD" id="weather-4"></li>
-            <br />
-            <li>
-              <div class="highLow">
-                <div id="high4">
-                  High: <span class="tempNum4 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-                <div id="low4">
-                  Low: <span class="tempNum4-4 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="day5 future">
-          <ul>
-            <li class="date5">Wednesday</li>
-            <li>
-              <img
-                class="img1 icon"
-                src="https://ssl.gstatic.com/onebox/weather/48/snow_s_cloudy.png"
-                alt="It is snowing"
-              />
-            </li>
-            <li class="weatherD" id="weather-5"></li>
-            <br />
-            <li>
-              <div class="highLow">
-                <div id="high5">
-                  High: <span class="tempNum5 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-                <div id="low5">
-                  Low: <span class="tempNum5-5 unit-0"></span
-                  ><span class="unit">°C</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <br /><br />
       </div>
       <footer>
         <p>
