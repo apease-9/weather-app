@@ -327,10 +327,42 @@ Mobile View
   }
 }
 
-@media screen and (max-width: 950px) {
-  .fiveDay {
-    transform: scale(0.8);
-    width: 110%;
+@media screen and (max-width: 800px) {
+  .forFiv {
+    transform: scale(0.85) translateX(-10%);
+    width: 120%;
+  }
+  .pop {
+    animation: boomerang_in_smaller 1.5s ease forwards;
+  }
+  .shrink {
+    animation: boomerang_out_smaller 1s ease forwards;
+  }
+  @keyframes boomerang_in_smaller {
+    0% {
+      transform: translateX(0);
+    }
+
+    60% {
+      transform: translateX(-600px);
+    }
+
+    100% {
+      transform: translateX(-400px);
+    }
+  }
+  @keyframes boomerang_out_smaller {
+    0% {
+      transform: translateX(-400px);
+    }
+
+    60% {
+      transform: translateX(-600px);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
   }
 }
 /* ========
