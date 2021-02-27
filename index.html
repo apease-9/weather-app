@@ -18,7 +18,7 @@
     <link href="src/style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
-  <body>
+  <body class="bod-ani">
     <div class="app">
       <div class="burger">
         <div class="line-1"></div>
@@ -44,18 +44,19 @@
           </label>
           <span id="12-hour">12-hour</span>
         </div>
-        <br />
 
         <div id="current-bg">
           <span id="ani-on">Animations on</span>
           <label class="switch">
-            <input type="checkbox" name="switchani" />
+            <input type="checkbox" name="switchAni" />
             <span class="slider round"></span>
           </label>
           <span id="ani-off">Animations off</span>
         </div>
         <br />
-
+        <br />
+        <br />
+        <br />
         <!--Change City form-->
         <div class="cityForm">
           <div id="form">
@@ -64,13 +65,12 @@
               <input type="text" placeholder="State" class="stateInput" />
               <input type="text" placeholder="Country" class="countryInput" />
               <br />
-              <div class="btn-group">
+              <br />
+              <div class="bGroup">
                 <button type="submit" class="citySubmit" id="citySubmit">
                   Change city
                 </button>
-                <div id="button">
-                  <button id="currentLocation">Use current location</button>
-                </div>
+                <button id="currentLocation">Use current location</button>
               </div>
             </form>
           </div>
