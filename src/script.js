@@ -1,7 +1,3 @@
-alert(
-  "To see weather in other cities, simply click the menu icon to change to your desired city, or choose one of the popular cities provided. Thank you for using this app."
-);
-
 //////////////////////////Change Temperature///////////////////////////////////////
 function showTemperature(response) {
   let apiKey = "100f8a7c29c0b02275197751bc3ff692";
@@ -563,112 +559,113 @@ function switchTime() {
   setTimeout(switchTime, 1000);
 }
 switchTime();
-
 /////////////////////Change background based on time/////////////////////
 let hourDay = new Date();
 let hourColor = hourDay.getHours();
 let submit = document.getElementById("citySubmit");
-let location = document.getElementById("currentLocation");
+let clocation = document.getElementById("currentLocation");
 
 //early morning
 if (hourColor >= 5 && hourColor < 8) {
   document.body.style.backgroundImage =
-    "linear-gradient(200deg, #fbc2eb 0%, #a6c1ee 100%)";
-  submit.style.background = "#ace0f9";
-  submit.style.color = "#000000";
+    "linear-gradient(200deg,#a770ef, #cf8bf3, #fdb99b)";
+  submit.style.background = "#fdb99b";
   submit.onmouseover = function () {
-    this.style.backgroundColor = "#a6c1ee";
+    this.style.backgroundColor = "#a770ef";
   };
   submit.onmouseout = function () {
-    this.style.backgroundColor = "#ace0f9";
+    this.style.backgroundColor = "#fdb99b";
   };
-  location.style.background = "#fbc2eb";
-  location.onmouseover = function () {
-    this.style.backgroundColor = "#a9c3f6";
+  clocation.style.background = "#fdb99b";
+  clocation.onmouseover = function () {
+    this.style.backgroundColor = "#a770ef";
   };
-  location.onmouseout = function () {
-    this.style.backgroundColor = "#fbc2eb";
+  clocation.onmouseout = function () {
+    this.style.backgroundColor = "#fdb99b";
   };
-  location.style.color = "#000000";
+  slid.forEach((element) => {
+    element.style.backgroundColor = "#000";
+  });
 }
 //mid morning
 if (hourColor >= 8 && hourColor < 12) {
   document.body.style.backgroundImage =
-    "linear-gradient(315deg, #ffcfdf 0%, #b0f3f1 74%)";
-  document.getElementById("citySubmit").style.background = "#ffcfdf";
-  document.getElementById("citySubmit").style.color = "#000000";
-  document.getElementById("citySubmit").onmouseover = function () {
-    this.style.backgroundColor = "#b0f3f1";
+    "linear-gradient(200deg,#7f7fd5,#86a8e7,#91eae4)";
+  submit.style.background = "#b0f8f1";
+  submit.onmouseover = function () {
+    this.style.backgroundColor = "#86a8e7";
   };
-  document.getElementById("citySubmit").onmouseout = function () {
-    this.style.backgroundColor = "#ffcfdf";
-  };
-  document.getElementById("currentLocation").style.background = "#b0f3f1";
-  document.getElementById("currentLocation").onmouseover = function () {
-    this.style.backgroundColor = "#ffcfdf";
-  };
-  document.getElementById("currentLocation").onmouseout = function () {
+  submit.onmouseout = function () {
     this.style.backgroundColor = "#b0f8f1";
   };
-  document.getElementById("currentLocation").style.color = "#000000";
+  clocation.style.background = "#b0f8f1";
+  clocation.onmouseover = function () {
+    this.style.backgroundColor = "#86a8e7";
+  };
+  clocation.onmouseout = function () {
+    this.style.backgroundColor = "#b0f8f1";
+  };
 }
 //afternoon
 if (hourColor >= 12 && hourColor < 17) {
   document.body.style.backgroundImage =
-    "linear-gradient(319deg, #dbf26e 0%, #61fa74 37%, #1cfdd6 100%)";
-  document.getElementById("citySubmit").style.background = "#61fa74";
-  document.getElementById("citySubmit").style.color = "#000000";
-  document.getElementById("citySubmit").onmouseover = function () {
-    this.style.backgroundColor = "#1cfdd6";
+    "radial-gradient(#ffffff,#6dd5fa 20%,#2980b9 74%)";
+  submit.style.background = "#6dd5fa";
+  submit.onmouseover = function () {
+    this.style.backgroundColor = "#86a8e7";
   };
-  document.getElementById("citySubmit").onmouseout = function () {
-    this.style.backgroundColor = "#61fa74";
+  submit.onmouseout = function () {
+    this.style.backgroundColor = "#6dd5fa";
   };
-  document.getElementById("currentLocation").style.background = "#1ce8d6";
-  document.getElementById("currentLocation").onmouseover = function () {
-    this.style.backgroundColor = "#61fa74";
+  submit.style.color = "#252222";
+  clocation.style.color = "#252222";
+  clocation.style.background = "#6dd5fa";
+  clocation.onmouseover = function () {
+    this.style.backgroundColor = "#86a8e7";
   };
-  document.getElementById("currentLocation").onmouseout = function () {
-    this.style.backgroundColor = "#1ceed6";
+  clocation.onmouseout = function () {
+    this.style.backgroundColor = "#6dd5fa";
   };
 }
 //early evening
 if (hourColor >= 17 && hourColor < 21) {
   document.body.style.backgroundImage =
     "linear-gradient(320deg, #1a2a6c, #b21f1f, #fdbb2d)";
-  document.getElementById("citySubmit").style.background = "#1a2a6c";
-  document.getElementById("citySubmit").style.color = "#FFFFFF";
-  document.getElementById("citySubmit").onmouseover = function () {
+  submit.style.background = "#1a2a6c";
+  submit.onmouseover = function () {
     this.style.backgroundColor = "#b21f1f";
   };
-  document.getElementById("citySubmit").onmouseout = function () {
+  submit.onmouseout = function () {
     this.style.backgroundColor = "#1a2a6c";
   };
-  document.getElementById("currentLocation").style.background = "#fdbb2d";
-  document.getElementById("currentLocation").onmouseover = function () {
+  submit.style.color = "rgb(219, 211, 230)";
+  clocation.style.color = "rgb(219, 211, 230)";
+  clocation.style.background = "#1a2a6c";
+  clocation.onmouseover = function () {
     this.style.backgroundColor = "#b21f1f";
   };
-  document.getElementById("currentLocation").onmouseout = function () {
-    this.style.backgroundColor = "#fdbb2d";
+  clocation.onmouseout = function () {
+    this.style.backgroundColor = "#1a2a6c";
   };
 }
 //late evening
 if (hourColor >= 21 || hourColor < 5) {
   document.body.style.backgroundImage =
     "linear-gradient(320deg, #855988, #6B4984, #483475, #2B2F77, #141852, #070B34)";
-  document.getElementById("citySubmit").style.background = "#483475";
-  document.getElementById("citySubmit").onmouseover = function () {
+  submit.style.background = "#483475";
+  submit.onmouseover = function () {
     this.style.backgroundColor = "#070B34";
   };
-  document.getElementById("citySubmit").onmouseout = function () {
+  submit.onmouseout = function () {
     this.style.backgroundColor = "#483475";
   };
-  document.getElementById("citySubmit").style.color = "rgb(219, 211, 230)";
-  document.getElementById("currentLocation").style.background = "#483475";
-  document.getElementById("currentLocation").onmouseover = function () {
+  submit.style.color = "rgb(219, 211, 230)";
+  clocation.style.color = "rgb(219, 211, 230)";
+  clocation.style.background = "#483475";
+  clocation.onmouseover = function () {
     this.style.backgroundColor = "#070B34";
   };
-  document.getElementById("currentLocation").onmouseout = function () {
+  clocation.onmouseout = function () {
     this.style.backgroundColor = "#483475";
   };
 }
