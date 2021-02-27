@@ -126,9 +126,7 @@ City Change Form, Current Location Button, and Poplar Cities
   display: flex;
   justify-content: space-around;
 }
-.citySubmit {
-  height: 30px;
-}
+
 .citySubmit,
 #currentLocation {
   text-align: center;
@@ -136,11 +134,11 @@ City Change Form, Current Location Button, and Poplar Cities
   border-radius: 10px;
   transition: 300ms ease-in-out;
   border-style: outset;
+  border: none;
   box-shadow: 2px 2px 2px 1px rgba(156, 154, 154, 0.8);
+  padding: 15px;
 }
-#currentLocation {
-  color: #ffffff;
-}
+
 .crumbs {
   text-align: center;
   display: flex;
@@ -707,6 +705,11 @@ Image changes
 }
 
 /* Cloudy */
+.cloud_style_2 {
+  margin: 0 auto;
+  padding: 0;
+}
+
 .cloud_style_2::before {
   content: " ";
   display: block;
@@ -722,6 +725,7 @@ Image changes
     120px 22px 0 10px #000, 100px -30px 0 10px #fff, 60px -30px 0 10px #fff,
     130px -10px 0 10px #fff;
   padding-top: 15px;
+  animation: bob 3s ease-in-out infinite;
 }
 
 /* Sunny */
