@@ -1,7 +1,7 @@
 //////////////////////////Change Temperature///////////////////////////////////////
 function showTemperature(response) {
   let apiKey = "100f8a7c29c0b02275197751bc3ff692";
-  console.log(response);
+
   document.querySelector("#search").innerHTML = response.data.name;
   let temperature = document.querySelector(".tempNum");
   temperature.innerHTML = Math.round(response.data.main.temp);
@@ -86,149 +86,145 @@ function showTemperature(response) {
       for (let i = 0; i < child.length; i++) {
         child[i].classList.add("Anone");
       }
-    } else {
+    } else if (aniSwitch.checked === false) {
       bodAn.classList.add("bod-ani");
       ani.classList.remove("Anone");
       for (let i = 0; i < child.length; i++) {
         child[i].classList.remove("Anone");
       }
-      if (num > 200 && num < 300) {
-        main.classList.add("thunder_storm");
-        style.classList.add("cloud");
-        style.classList.add("cloud_style_1");
-        ani.classList.add("thunder");
-        child_bolt.classList.add("bolt");
-        main.classList.remove("rainy", "snowing", "foggy", "cloudy", "sunny");
-        style.classList.remove("mist", "sun");
-        style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
-        ani.classList.remove("rain", "snow", "fog", "cloudy", "shine");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.remove("drop", "fall", "misty", "cloud-y", "ray");
-        }
+    }
+    if (num > 200 && num < 300) {
+      main.classList.add("thunder_storm");
+      style.classList.add("cloud");
+      style.classList.add("cloud_style_1");
+      ani.classList.add("thunder");
+      child_bolt.classList.add("bolt");
+      main.classList.remove("rainy", "snowing", "foggy", "cloudy", "sunny");
+      style.classList.remove("mist", "sun");
+      style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
+      ani.classList.remove("rain", "snow", "fog", "cloudy", "shine");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.remove("drop", "fall", "misty", "cloud-y", "ray");
       }
-      if ((num > 300 && num < 400) || (num > 500 && num < 600)) {
-        main.classList.add("rainy");
-        style.classList.add("cloud");
-        style.classList.add("cloud_style_1");
-        ani.classList.add("rain");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.add("drop");
-        }
-        main.classList.remove(
-          "thunder_storm",
-          "snowing",
-          "foggy",
-          "cloudy",
-          "sunny"
-        );
-        style.classList.remove("mist", "sun");
-        style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
-        ani.classList.remove("thunder", "snow", "fog", "cloudy", "shine");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.remove("bolt", "fall", "misty", "cloud-y", "ray");
-        }
+    }
+    if ((num > 300 && num < 400) || (num > 500 && num < 600)) {
+      main.classList.add("rainy");
+      style.classList.add("cloud");
+      style.classList.add("cloud_style_1");
+      ani.classList.add("rain");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.add("drop");
       }
-      if (num > 600 && num < 700) {
-        main.classList.add("snowing");
-        style.classList.add("cloud");
-        style.classList.add("cloud_style_1");
-        ani.classList.add("snow");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.add("fall");
-        }
-        main.classList.remove(
-          "rainy",
-          "thunder_storm",
-          "foggy",
-          "cloudy",
-          "sunny"
-        );
-        style.classList.remove("mist", "sun");
-        style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
-        ani.classList.remove("rain", "thunder", "fog", "cloudy", "shine");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.remove("drop", "bolt", "misty", "cloud-y", "ray");
-        }
+      main.classList.remove(
+        "thunder_storm",
+        "snowing",
+        "foggy",
+        "cloudy",
+        "sunny"
+      );
+      style.classList.remove("mist", "sun");
+      style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
+      ani.classList.remove("thunder", "snow", "fog", "cloudy", "shine");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.remove("bolt", "fall", "misty", "cloud-y", "ray");
       }
-      if (num > 700 && num < 800) {
-        main.classList.add("foggy");
-        style.classList.add("mist");
-        style.classList.add("mist_style_1");
-        ani.classList.add("fog");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.add("misty");
-        }
-        main.classList.remove(
-          "rainy",
-          "thunder_storm",
-          "snowing",
-          "cloudy",
-          "sunny"
-        );
-        style.classList.remove("cloud", "sun");
-        style.classList.remove("cloud_style_1", "cloud_style_2", "sun_style_1");
-        ani.classList.remove("rain", "thunder", "snow", "cloudy", "shine");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.remove("drop", "bolt", "fall", "cloud-y", "ray");
-        }
+    }
+    if (num > 600 && num < 700) {
+      main.classList.add("snowing");
+      style.classList.add("cloud");
+      style.classList.add("cloud_style_1");
+      ani.classList.add("snow");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.add("fall");
       }
-      if (num > 800 && num < 900) {
-        main.classList.add("cloudy");
-        style.classList.add("cloud");
-        style.classList.add("cloud_style_2");
-        ani.classList.add("cloudy");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.add("cloud-y");
-        }
-        main.classList.remove(
-          "rainy",
-          "thunder_storm",
-          "snowing",
-          "foggy",
-          "sunny"
-        );
-        style.classList.remove("mist", "sun");
-        style.classList.remove("cloud_style_1", "mist_style_1", "sun_style_1");
-        ani.classList.remove("rain", "thunder", "snow", "fog", "shine");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.remove("drop", "bolt", "fall", "misty", "ray");
-        }
+      main.classList.remove(
+        "rainy",
+        "thunder_storm",
+        "foggy",
+        "cloudy",
+        "sunny"
+      );
+      style.classList.remove("mist", "sun");
+      style.classList.remove("mist_style_1", "cloud_style_2", "sun_style_1");
+      ani.classList.remove("rain", "thunder", "fog", "cloudy", "shine");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.remove("drop", "bolt", "misty", "cloud-y", "ray");
       }
-      if (num === 800) {
-        main.classList.add("sunny");
-        style.classList.add("sun");
-        style.classList.add("sun_style_1");
-        ani.classList.add("shine");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.add("ray");
-        }
-        main.classList.remove(
-          "rainy",
-          "thunder_storm",
-          "snowing",
-          "foggy",
-          "cloudy"
-        );
-        style.classList.remove("mist", "cloud");
-        style.classList.remove(
-          "cloud_style_1",
-          "mist_style_1",
-          "cloud_style_2"
-        );
-        ani.classList.remove("rain", "thunder", "snow", "fog", "cloudy");
-        for (let i = 0; i < child.length; i++) {
-          child[i].classList.remove("drop", "bolt", "fall", "misty", "cloud-y");
-        }
-      } else {
-        console.log("Error at change icon");
+    }
+    if (num > 700 && num < 800) {
+      main.classList.add("foggy");
+      style.classList.add("mist");
+      style.classList.add("mist_style_1");
+      ani.classList.add("fog");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.add("misty");
       }
+      main.classList.remove(
+        "rainy",
+        "thunder_storm",
+        "snowing",
+        "cloudy",
+        "sunny"
+      );
+      style.classList.remove("cloud", "sun");
+      style.classList.remove("cloud_style_1", "cloud_style_2", "sun_style_1");
+      ani.classList.remove("rain", "thunder", "snow", "cloudy", "shine");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.remove("drop", "bolt", "fall", "cloud-y", "ray");
+      }
+    }
+    if (num > 800 && num < 900) {
+      main.classList.add("cloudy");
+      style.classList.add("cloud");
+      style.classList.add("cloud_style_2");
+      ani.classList.add("cloudy");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.add("cloud-y");
+      }
+      main.classList.remove(
+        "rainy",
+        "thunder_storm",
+        "snowing",
+        "foggy",
+        "sunny"
+      );
+      style.classList.remove("mist", "sun");
+      style.classList.remove("cloud_style_1", "mist_style_1", "sun_style_1");
+      ani.classList.remove("rain", "thunder", "snow", "fog", "shine");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.remove("drop", "bolt", "fall", "misty", "ray");
+      }
+    }
+    if (num === 800) {
+      main.classList.add("sunny");
+      style.classList.add("sun");
+      style.classList.add("sun_style_1");
+      ani.classList.add("shine");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.add("ray");
+      }
+      main.classList.remove(
+        "rainy",
+        "thunder_storm",
+        "snowing",
+        "foggy",
+        "cloudy"
+      );
+      style.classList.remove("mist", "cloud");
+      style.classList.remove("cloud_style_1", "mist_style_1", "cloud_style_2");
+      ani.classList.remove("rain", "thunder", "snow", "fog", "cloudy");
+      for (let i = 0; i < child.length; i++) {
+        child[i].classList.remove("drop", "bolt", "fall", "misty", "cloud-y");
+      }
+    } else {
+      console.log("Error at change icon");
     }
   }
   switchAni();
 }
+
 ////////////////////Five Day forecast, description, and max/min for the day////////////////////////
 function showForecast(response) {
-  console.log(response.data);
   //Max and Min for the day
   let maxTemp = document.querySelector(".temp-max");
   maxTemp.innerHTML = Math.round(response.data.daily[0].temp.max);
@@ -285,27 +281,27 @@ function showForecast(response) {
 
   //Make an if statement to change weather icon based on what the main idea is (ie. rain, snow, sun, cloudy)
   let num1 = response.data.daily[1].weather[0].icon;
-  console.log(num1);
+
   let img1 = document.querySelector(".img1");
   img1.src = `http://openweathermap.org/img/wn/${num1}@2x.png`;
 
   let num2 = response.data.daily[2].weather[0].icon;
-  console.log(num2);
+
   let img2 = document.querySelector(".img2");
   img2.src = `http://openweathermap.org/img/wn/${num2}@2x.png`;
 
   let num3 = response.data.daily[3].weather[0].icon;
-  console.log(num3);
+
   let img3 = document.querySelector(".img3");
   img3.src = `http://openweathermap.org/img/wn/${num3}@2x.png`;
 
   let num4 = response.data.daily[4].weather[0].icon;
-  console.log(num4);
+
   let img4 = document.querySelector(".img4");
   img4.src = `http://openweathermap.org/img/wn/${num4}@2x.png`;
 
   let num5 = response.data.daily[5].weather[0].icon;
-  console.log(num5);
+
   let img5 = document.querySelector(".img5");
   img5.src = `http://openweathermap.org/img/wn/${num5}@2x.png`;
 }
@@ -376,7 +372,7 @@ function cityC(event) {
     let city = `${cityInput},${stateInput},${countryInput}`;
     let apiKey = "100f8a7c29c0b02275197751bc3ff692";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-    console.log(fetch(apiURL));
+
     function cityExists(apiURL, callback) {
       fetch(apiURL, { method: "head" }).then(function (status) {
         callback(status.ok);

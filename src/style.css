@@ -122,10 +122,6 @@ City Change Form, Current Location Button, and Poplar Cities
   border: none;
   box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
 }
-.bGroup {
-  display: flex;
-  justify-content: space-around;
-}
 
 .citySubmit,
 #currentLocation {
@@ -137,6 +133,17 @@ City Change Form, Current Location Button, and Poplar Cities
   border: none;
   box-shadow: 2px 2px 2px 1px rgba(156, 154, 154, 0.8);
   padding: 15px;
+  display: flex;
+  position: relative;
+}
+.citySubmit {
+  left: 10%;
+  top: 0;
+}
+#currentLocation {
+  left: 50%;
+  right: 50%;
+  top: -54px;
 }
 
 .crumbs {
