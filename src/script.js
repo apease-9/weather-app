@@ -93,7 +93,7 @@ function showTemperature(response) {
         child[i].classList.remove("Anone");
       }
     }
-    if (num > 200 && num < 300) {
+    if (num >= 200 && num < 300) {
       main.classList.add("thunder_storm");
       style.classList.add("cloud");
       style.classList.add("cloud_style_1");
@@ -107,7 +107,7 @@ function showTemperature(response) {
         child[i].classList.remove("drop", "fall", "misty", "cloud-y", "ray");
       }
     }
-    if ((num > 300 && num < 400) || (num > 500 && num < 600)) {
+    if ((num >= 300 && num < 400) || (num >= 500 && num < 600)) {
       main.classList.add("rainy");
       style.classList.add("cloud");
       style.classList.add("cloud_style_1");
@@ -129,7 +129,7 @@ function showTemperature(response) {
         child[i].classList.remove("bolt", "fall", "misty", "cloud-y", "ray");
       }
     }
-    if (num > 600 && num < 700) {
+    if (num >= 600 && num < 700) {
       main.classList.add("snowing");
       style.classList.add("cloud");
       style.classList.add("cloud_style_1");
