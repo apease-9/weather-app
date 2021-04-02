@@ -1,6 +1,6 @@
 //////////////////////////Change Temperature///////////////////////////////////////
 function showTemperature(response) {
-  let apiKey = "100f8a7c29c0b02275197751bc3ff692";
+  let apiKey = "24d488c99ce6e0a60ed166dc0615af96";
 
   document.querySelector("#search").innerHTML = response.data.name;
   let temperature = document.querySelector(".tempNum");
@@ -345,7 +345,7 @@ if (document.querySelector("input[name=switchUnits]").checked) {
   units = "metric";
 }
 
-let apiKey = "100f8a7c29c0b02275197751bc3ff692";
+let apiKey = "24d488c99ce6e0a60ed166dc0615af96";
 let city = "Raleigh";
 let state = "NC";
 let country = "US";
@@ -370,7 +370,7 @@ function cityC(event) {
       units = "metric";
     }
     let city = `${cityInput},${stateInput},${countryInput}`;
-    let apiKey = "100f8a7c29c0b02275197751bc3ff692";
+    let apiKey = "24d488c99ce6e0a60ed166dc0615af96";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
 
     function cityExists(apiURL, callback) {
@@ -398,7 +398,7 @@ function showPosition(position) {
     }
     let lon = position.coords.longitude;
     let lat = position.coords.latitude;
-    let apiKey = "100f8a7c29c0b02275197751bc3ff692";
+    let apiKey = "24d488c99ce6e0a60ed166dc0615af96";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
     axios.get(apiURL).then(showTemperature);
   });
